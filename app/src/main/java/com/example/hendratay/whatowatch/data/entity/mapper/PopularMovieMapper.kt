@@ -2,8 +2,9 @@ package com.example.hendratay.whatowatch.data.entity.mapper
 
 import com.example.hendratay.whatowatch.data.entity.PopularMovieEntity
 import com.example.hendratay.whatowatch.domain.model.PopularMovie
+import javax.inject.Inject
 
-class PopularMovieMapper(val resultsMapper: ResultsMapper): Mapper<PopularMovieEntity, PopularMovie> {
+class PopularMovieMapper @Inject constructor(private val resultsMapper: ResultsMapper): Mapper<PopularMovieEntity, PopularMovie> {
 
     override fun mapFromEntity(type: PopularMovieEntity): PopularMovie {
         return PopularMovie(type.page, resultsMapper.mapFromEntity(type.results), type.totalResults, type.totalPages)

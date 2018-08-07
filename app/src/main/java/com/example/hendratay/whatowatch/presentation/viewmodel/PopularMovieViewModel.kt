@@ -11,9 +11,11 @@ import com.example.hendratay.whatowatch.presentation.data.Resource
 import com.example.hendratay.whatowatch.presentation.data.ResourceState
 import com.example.hendratay.whatowatch.presentation.model.PopularMovieView
 import com.example.hendratay.whatowatch.presentation.model.mapper.PopularMovieViewMapper
+import javax.inject.Inject
 
-class PopularMovieViewModel(private val getPopularMovie: GetPopularMovie,
-                            val popularMovieViewMapper: PopularMovieViewMapper): ViewModel() {
+class PopularMovieViewModel @Inject constructor(private val getPopularMovie: GetPopularMovie,
+                                                private val popularMovieViewMapper: PopularMovieViewMapper):
+        ViewModel() {
 
     private val popularMovieLiveData: MutableLiveData<Resource<PopularMovieView>> = MutableLiveData()
 

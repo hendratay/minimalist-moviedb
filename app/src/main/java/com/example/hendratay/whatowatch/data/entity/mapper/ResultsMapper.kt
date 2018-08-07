@@ -2,8 +2,9 @@ package com.example.hendratay.whatowatch.data.entity.mapper
 
 import com.example.hendratay.whatowatch.data.entity.ResultsEntity
 import com.example.hendratay.whatowatch.domain.model.Results
+import javax.inject.Inject
 
-class ResultsMapper: Mapper<ResultsEntity, Results> {
+class ResultsMapper @Inject constructor(): Mapper<ResultsEntity, Results> {
 
     override fun mapFromEntity(type: ResultsEntity): Results {
         return Results(type.posterPath,

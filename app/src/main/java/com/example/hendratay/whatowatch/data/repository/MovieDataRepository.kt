@@ -5,9 +5,10 @@ import com.example.hendratay.whatowatch.data.repository.datasource.MovieDataStor
 import com.example.hendratay.whatowatch.domain.model.PopularMovie
 import com.example.hendratay.whatowatch.domain.repository.MovieRepository
 import io.reactivex.Observable
+import javax.inject.Inject
 
-class MovieDataRepository(val factory: MovieDataStoreFactory,
-                          val popularMovieMapper: PopularMovieMapper):
+class MovieDataRepository @Inject constructor(private val factory: MovieDataStoreFactory,
+                                              private val popularMovieMapper: PopularMovieMapper):
         MovieRepository {
 
     override fun getPopularMovie(page: Int): Observable<PopularMovie> {
