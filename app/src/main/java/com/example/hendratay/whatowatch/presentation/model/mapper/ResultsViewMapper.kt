@@ -22,4 +22,8 @@ class ResultsViewMapper: Mapper<ResultsView, Results> {
                 type.voteAverage)
     }
 
+    fun mapToView(list: List<Results>): List<ResultsView> {
+        return list.map { mapToView(it) }
+    }
+
 }

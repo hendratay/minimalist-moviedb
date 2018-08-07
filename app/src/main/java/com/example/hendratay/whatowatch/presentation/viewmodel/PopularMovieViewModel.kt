@@ -2,6 +2,7 @@ package com.example.hendratay.whatowatch.presentation.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import android.util.Log
 import com.example.hendratay.whatowatch.domain.interactor.DefaultObserver
 import com.example.hendratay.whatowatch.domain.interactor.GetPopularMovie
@@ -16,16 +17,20 @@ class PopularMovieViewModel(private val getPopularMovie: GetPopularMovie,
 
     private val popularMovieLiveData: MutableLiveData<Resource<PopularMovieView>> = MutableLiveData()
 
+    init {
+        fetchPopularMovie()
+    }
+
     override fun onCleared() {
         getPopularMovie.dispose()
         super.onCleared()
     }
 
-    private fun getPopularMovie() = popularMovieLiveData
+    fun getPopularMovie() = popularMovieLiveData
 
     private fun fetchPopularMovie() {
         popularMovieLiveData.postValue(Resource(ResourceState.LOADING, null, null))
-        getPopularMovie.execute(PopularMovieObserver(), GetPopularMovie.Params.forPage(1))
+        getPopularMovie.execute(PopularMovieObserver(), GetPopularMovie.Params.forPage(2))
     }
 
     inner class PopularMovieObserver: DefaultObserver<PopularMovie>() {
@@ -34,12 +39,26 @@ class PopularMovieViewModel(private val getPopularMovie: GetPopularMovie,
 
         override fun onNext(t: PopularMovie) {
             popularMovieLiveData.postValue(Resource(ResourceState.SUCCESS, popularMovieViewMapper.mapToView(t), null))
-            Log.d("Popular Movie", t.toString())
+            Log.d("Popular Movie Success", t.toString())
         }
 
         override fun onError(e: Throwable) {
             popularMovieLiveData.postValue(Resource(ResourceState.ERROR, null, e.message))
+            Log.d("Popular Movie Error", e.toString())
         }
+    }
+
+}
+
+open class PopularMovieViewModelFactory(
+        private val getPopularMovie: GetPopularMovie,
+        private val popularMovieViewMapper: PopularMovieViewMapper): ViewModelProvider.Factory {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(PopularMovieViewModel::class.java)) {
+            return PopularMovieViewModel(getPopularMovie, popularMovieViewMapper) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 
 }

@@ -13,7 +13,7 @@ class GetPopularMovie(val movieRepository: MovieRepository): UseCase<PopularMovi
     class Params(val page: Int) {
         companion object {
             fun forPage(page: Int): Params {
-                return forPage(page)
+                return Params(page)
             }
         }
     }

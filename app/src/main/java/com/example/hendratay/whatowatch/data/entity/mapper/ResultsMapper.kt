@@ -39,4 +39,12 @@ class ResultsMapper: Mapper<ResultsEntity, Results> {
                 type.voteAverage)
     }
 
+    fun mapFromEntity(list: List<ResultsEntity>): List<Results> {
+        return list.map { mapFromEntity(it) }
+    }
+
+    fun mapToEntity(list: List<Results>): List<ResultsEntity> {
+        return list.map { mapToEntity(it) }
+    }
+
 }
