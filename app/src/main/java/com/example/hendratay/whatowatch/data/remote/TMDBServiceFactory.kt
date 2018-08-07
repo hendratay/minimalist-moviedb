@@ -1,5 +1,6 @@
 package com.example.hendratay.whatowatch.data.remote
 
+import com.example.hendratay.whatowatch.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.HttpUrl
@@ -39,8 +40,7 @@ object TMDBServiceFactory {
 class TMDBInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val url: HttpUrl = chain.request().url().newBuilder()
-                //todo: add api key
-                .addQueryParameter("api_key", "Todo: Add api key")
+                .addQueryParameter("api_key", BuildConfig.TMDB_API_KEY)
                 .build()
         return chain.proceed(chain.request().newBuilder().addHeader("Accept", "application/json").url(url).build())
     }
