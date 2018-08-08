@@ -15,4 +15,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <android.support.design.widget.BottomNavigationView
+        style="@style/Widget.Design.BottomNavigationView"
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_bottom_navigation" />
+
 </android.support.constraint.ConstraintLayout>
