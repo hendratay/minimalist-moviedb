@@ -2,7 +2,7 @@ package com.example.hendratay.whatowatch
 
 import com.example.hendratay.whatowatch.di.DaggerApplicationComponent
 import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import dagger.android.support.DaggerApplication
 
 class Application: DaggerApplication() {
 

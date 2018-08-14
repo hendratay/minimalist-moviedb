@@ -32,7 +32,7 @@ class PopularMovieViewModel @Inject constructor(private val getPopularMovie: Get
 
     private fun fetchPopularMovie() {
         popularMovieLiveData.postValue(Resource(ResourceState.LOADING, null, null))
-        getPopularMovie.execute(PopularMovieObserver(), GetPopularMovie.Params.forPage(2))
+        getPopularMovie.execute(PopularMovieObserver(), GetPopularMovie.Params.forPage(1))
     }
 
     inner class PopularMovieObserver: DefaultObserver<PopularMovie>() {

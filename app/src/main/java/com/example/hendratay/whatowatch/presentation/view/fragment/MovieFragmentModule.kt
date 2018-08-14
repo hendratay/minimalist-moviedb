@@ -1,4 +1,4 @@
-package com.example.hendratay.whatowatch.presentation.view.activity
+package com.example.hendratay.whatowatch.presentation.view.fragment
 
 import com.example.hendratay.whatowatch.domain.interactor.GetPopularMovie
 import com.example.hendratay.whatowatch.presentation.model.mapper.PopularMovieViewMapper
@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class MainActivityModule {
+class MovieFragmentModule {
 
     @Module
     companion object {
