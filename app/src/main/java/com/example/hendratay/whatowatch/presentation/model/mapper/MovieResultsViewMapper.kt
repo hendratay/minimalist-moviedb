@@ -1,13 +1,13 @@
 package com.example.hendratay.whatowatch.presentation.model.mapper
 
 import com.example.hendratay.whatowatch.domain.model.MovieResults
-import com.example.hendratay.whatowatch.presentation.model.ResultsView
+import com.example.hendratay.whatowatch.presentation.model.MovieResultsView
 import javax.inject.Inject
 
-class ResultsViewMapper @Inject constructor(): Mapper<ResultsView, MovieResults> {
+class MovieResultsViewMapper @Inject constructor(): Mapper<MovieResultsView, MovieResults> {
 
-    override fun mapToView(type: MovieResults): ResultsView {
-        return ResultsView(type.posterPath,
+    override fun mapToView(type: MovieResults): MovieResultsView {
+        return MovieResultsView(type.posterPath,
                 type.adult,
                 type.overview,
                 type.releaseDate,
@@ -23,7 +23,7 @@ class ResultsViewMapper @Inject constructor(): Mapper<ResultsView, MovieResults>
                 type.voteAverage)
     }
 
-    fun mapToView(list: List<MovieResults>): List<ResultsView> {
+    fun mapToView(list: List<MovieResults>): List<MovieResultsView> {
         return list.map { mapToView(it) }
     }
 

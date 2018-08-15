@@ -1,13 +1,13 @@
 package com.example.hendratay.whatowatch.data.entity.mapper
 
 import com.example.hendratay.whatowatch.data.entity.MovieResultsEntity
-import com.example.hendratay.whatowatch.domain.model.Results
+import com.example.hendratay.whatowatch.domain.model.MovieResults
 import javax.inject.Inject
 
-class ResultsMapper @Inject constructor(): Mapper<MovieResultsEntity, Results> {
+class MovieResultsMapper @Inject constructor(): Mapper<MovieResultsEntity, MovieResults> {
 
-    override fun mapFromEntity(type: MovieResultsEntity): Results {
-        return Results(type.posterPath,
+    override fun mapFromEntity(type: MovieResultsEntity): MovieResults {
+        return MovieResults(type.posterPath,
                 type.adult,
                 type.overview,
                 type.releaseDate,
@@ -23,7 +23,7 @@ class ResultsMapper @Inject constructor(): Mapper<MovieResultsEntity, Results> {
                 type.voteAverage)
     }
 
-    override fun mapToEntity(type: Results): MovieResultsEntity {
+    override fun mapToEntity(type: MovieResults): MovieResultsEntity {
         return MovieResultsEntity(type.posterPath,
                 type.adult,
                 type.overview,
@@ -40,11 +40,11 @@ class ResultsMapper @Inject constructor(): Mapper<MovieResultsEntity, Results> {
                 type.voteAverage)
     }
 
-    fun mapFromEntity(list: List<MovieResultsEntity>): List<Results> {
+    fun mapFromEntity(list: List<MovieResultsEntity>): List<MovieResults> {
         return list.map { mapFromEntity(it) }
     }
 
-    fun mapToEntity(list: List<Results>): List<MovieResultsEntity> {
+    fun mapToEntity(list: List<MovieResults>): List<MovieResultsEntity> {
         return list.map { mapToEntity(it) }
     }
 

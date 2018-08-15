@@ -5,16 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hendratay.whatowatch.R
-import com.example.hendratay.whatowatch.presentation.model.PopularMovieView
-import com.example.hendratay.whatowatch.presentation.model.ResultsView
+import com.example.hendratay.whatowatch.presentation.model.MovieResultsView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MovieAdapter(private val movieList: List<ResultsView>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val movieList: List<MovieResultsView>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(resultsView: ResultsView) {
-            Picasso.get().load("http://image.tmdb.org/t/p/w780/${resultsView.backdropPath}").into(itemView.img_backdrop)
+        fun bind(movieResultsView: MovieResultsView) {
+            Picasso.get().load("http://image.tmdb.org/t/p/w780/${movieResultsView.backdropPath}").into(itemView.img_backdrop)
         }
     }
 
