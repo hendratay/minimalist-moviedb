@@ -13,7 +13,7 @@ class MovieAdapter(private val movieList: List<MovieResultsView>): RecyclerView.
 
     inner class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(movieResultsView: MovieResultsView) {
-            Picasso.get().load("http://image.tmdb.org/t/p/w780/${movieResultsView.backdropPath}").into(itemView.img_backdrop)
+            Picasso.get().load("http://image.tmdb.org/t/p/w780/${movieResultsView.backdropPath}").into(itemView.img_movie_backdrop)
         }
     }
 

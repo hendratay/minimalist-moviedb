@@ -23,8 +23,7 @@ import javax.inject.Inject
 
 class MovieFragment: Fragment() {
 
-    @Inject
-    lateinit var popularMovieViewModelFactory: PopularMovieViewModelFactory
+    @Inject lateinit var popularMovieViewModelFactory: PopularMovieViewModelFactory
     private lateinit var popularMovieViewModel: PopularMovieViewModel
     private lateinit var adapter: MovieAdapter
     private var movieList: MutableList<MovieResultsView> = mutableListOf()
@@ -61,17 +60,13 @@ class MovieFragment: Fragment() {
                     requireActivity().bottom_navigation_view.visibility = View.VISIBLE
                 }
             }
-
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-            }
         })
     }
 
     private fun getPopularMovie() {
         popularMovieViewModel = ViewModelProviders.of(this, popularMovieViewModelFactory)[PopularMovieViewModel::class.java]
         popularMovieViewModel.getPopularMovie().observe(this,
-                Observer<Resource<PopularMovieView>> {
+                Observer<Resource<PopularMovieView>> { it ->
                     it?.data?.let {
                         movieList.clear()
                         for (i in 0 until it.results.size) {
