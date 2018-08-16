@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity() {
                     loadFragment(TvFragment())
                     true
                 }
-                R.id.action_user -> {
-                    loadFragment(UserFragment())
+                R.id.action_actor -> {
+                    loadFragment(ActorFragment())
                     true
                 }
                 else -> false

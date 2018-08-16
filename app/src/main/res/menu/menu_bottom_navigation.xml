@@ -26,9 +26,9 @@
         android:title="@string/tv"/>
 
     <item
-        android:id="@+id/action_user"
+        android:id="@+id/action_actor"
         android:enabled="true"
         android:icon="@drawable/ic_person_black_24dp"
-        android:title="@string/user"/>
+        android:title="@string/actor"/>
 
 </menu>
