@@ -17,14 +17,14 @@ abstract class UseCase<T, Params> {
         val observable: Observable<T> = this.buildUseCaseObservable(params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-        addDisposeable(observable.subscribeWith(observer))
+        addDisposable(observable.subscribeWith(observer))
     }
     fun dispose() {
         if(!disposables.isDisposed) disposables.dispose()
     }
 
-    fun addDisposeable(disposeable: Disposable) {
-        disposables.add(disposeable)
+    private fun addDisposable(disposable: Disposable) {
+        disposables.add(disposable)
     }
 
 }

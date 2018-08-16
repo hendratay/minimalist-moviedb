@@ -9,7 +9,7 @@ data class TvResultsEntity(@SerializedName("poster_path") val posterPath: String
                            @SerializedName("vote_average") val voteAverage: Number,
                            @SerializedName("overview") val overview: String,
                            @SerializedName("first_air_date") val firstAirDate: String,
-                           @SerializedName("origin_country") val originCountry: IntArray,
+                           @SerializedName("origin_country") val originCountry: Array<String>,
                            @SerializedName("genre_ids") val genreIds: IntArray,
                            @SerializedName("original_language") val originalLanguage: String,
                            @SerializedName("vote_count") val voteCount: Int,
