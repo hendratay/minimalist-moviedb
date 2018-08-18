@@ -2,7 +2,6 @@ package com.example.hendratay.whatowatch.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-// todo: add media_type to movieresultsentity and tvresultsentity
 data class ActorResultsEntity(@SerializedName("profile_path") val profilePath: String,
                               @SerializedName("adult") val adult: Boolean,
                               @SerializedName("id") val id: Int,

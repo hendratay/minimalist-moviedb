@@ -8,6 +8,7 @@ data class MovieResultsEntity(@SerializedName("poster_path") val posterPath: Str
                               @SerializedName("release_date") val releaseDate: String,
                               @SerializedName("genre_ids") val genreIds: IntArray,
                               @SerializedName("id") val id: Int,
+                              @SerializedName("media_type") val mediaType: String?,
                               @SerializedName("original_title") val originalTitle: String,
                               @SerializedName("original_language") val originalLanguage: String,
                               @SerializedName("title") val title: String,

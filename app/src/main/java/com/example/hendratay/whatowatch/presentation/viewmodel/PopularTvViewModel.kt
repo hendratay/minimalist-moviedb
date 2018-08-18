@@ -6,18 +6,18 @@ import android.arch.lifecycle.ViewModelProvider
 import android.util.Log
 import com.example.hendratay.whatowatch.domain.interactor.DefaultObserver
 import com.example.hendratay.whatowatch.domain.interactor.GetPopularTv
-import com.example.hendratay.whatowatch.domain.model.PopularTv
+import com.example.hendratay.whatowatch.domain.model.TvPopular
 import com.example.hendratay.whatowatch.presentation.data.Resource
 import com.example.hendratay.whatowatch.presentation.data.ResourceState
-import com.example.hendratay.whatowatch.presentation.model.PopularTvView
-import com.example.hendratay.whatowatch.presentation.model.mapper.PopularTvViewMapper
+import com.example.hendratay.whatowatch.presentation.model.TvPopularView
+import com.example.hendratay.whatowatch.presentation.model.mapper.TvPopularViewMapper
 import javax.inject.Inject
 
 class PopularTvViewModel @Inject constructor(private val getPopularTv: GetPopularTv,
-                                             private val popularTvViewMapper: PopularTvViewMapper):
+                                             private val tvPopularViewMapper: TvPopularViewMapper):
         ViewModel() {
 
-    private val popularTvLiveData: MutableLiveData<Resource<PopularTvView>> = MutableLiveData()
+    private val tvPopularLiveData: MutableLiveData<Resource<TvPopularView>> = MutableLiveData()
 
     init {
         fetchPopularTv()
@@ -28,24 +28,24 @@ class PopularTvViewModel @Inject constructor(private val getPopularTv: GetPopula
         super.onCleared()
     }
 
-    fun getPopularMovie() = popularTvLiveData
+    fun getPopularMovie() = tvPopularLiveData
 
     private fun fetchPopularTv() {
-        popularTvLiveData.postValue(Resource(ResourceState.LOADING, null, null))
+        tvPopularLiveData.postValue(Resource(ResourceState.LOADING, null, null))
         getPopularTv.execute(PopularMovieObserver(), GetPopularTv.Params.forPage(1))
     }
 
-    inner class PopularMovieObserver: DefaultObserver<PopularTv>() {
+    inner class PopularMovieObserver: DefaultObserver<TvPopular>() {
         override fun onComplete() {
         }
 
-        override fun onNext(t: PopularTv) {
-            popularTvLiveData.postValue(Resource(ResourceState.SUCCESS, popularTvViewMapper.mapToView(t), null))
+        override fun onNext(t: TvPopular) {
+            tvPopularLiveData.postValue(Resource(ResourceState.SUCCESS, tvPopularViewMapper.mapToView(t), null))
             Log.d("Tv Live Data", t.toString())
         }
 
         override fun onError(e: Throwable) {
-            popularTvLiveData.postValue(Resource(ResourceState.ERROR, null, e.message))
+            tvPopularLiveData.postValue(Resource(ResourceState.ERROR, null, e.message))
             Log.d("Tv Live Data", e.toString())
         }
     }
@@ -54,11 +54,11 @@ class PopularTvViewModel @Inject constructor(private val getPopularTv: GetPopula
 
 open class PopularTvViewModelFactory(
         private val getPopularTv: GetPopularTv,
-        private val popularTvViewMapper: PopularTvViewMapper): ViewModelProvider.Factory {
+        private val tvPopularViewMapper: TvPopularViewMapper): ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(PopularTvViewModel::class.java)) {
-            return PopularTvViewModel(getPopularTv, popularTvViewMapper) as T
+            return PopularTvViewModel(getPopularTv, tvPopularViewMapper) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

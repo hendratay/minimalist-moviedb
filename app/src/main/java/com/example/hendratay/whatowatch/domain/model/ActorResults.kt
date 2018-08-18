@@ -1,6 +1,5 @@
 package com.example.hendratay.whatowatch.domain.model
 
-// todo
 data class ActorResults(val profilePath: String,
                         val adult: Boolean,
                         val id: Int,

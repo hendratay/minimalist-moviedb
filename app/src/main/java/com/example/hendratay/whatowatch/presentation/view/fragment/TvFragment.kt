@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.hendratay.whatowatch.R
 import com.example.hendratay.whatowatch.presentation.data.Resource
-import com.example.hendratay.whatowatch.presentation.model.PopularTvView
+import com.example.hendratay.whatowatch.presentation.model.TvPopularView
 import com.example.hendratay.whatowatch.presentation.model.TvResultsView
 import com.example.hendratay.whatowatch.presentation.view.adapter.TvAdapter
 import com.example.hendratay.whatowatch.presentation.viewmodel.PopularTvViewModel
@@ -61,7 +61,7 @@ class TvFragment: Fragment() {
     private fun getPopularTv() {
         popularTvViewModel = ViewModelProviders.of(this, popularTvViewModelFactory)[PopularTvViewModel::class.java]
         popularTvViewModel.getPopularMovie().observe(this,
-                Observer<Resource<PopularTvView>> { it ->
+                Observer<Resource<TvPopularView>> { it ->
                     it?.data?.let {
                         tvList.clear()
                         for (i in 0 until it.results.size) {

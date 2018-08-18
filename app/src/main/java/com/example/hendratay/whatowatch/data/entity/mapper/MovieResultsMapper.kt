@@ -13,6 +13,7 @@ class MovieResultsMapper @Inject constructor(): Mapper<MovieResultsEntity, Movie
                 type.releaseDate,
                 type.genreIds,
                 type.id,
+                type.mediaType,
                 type.originalTitle,
                 type.originalLanguage,
                 type.title,
@@ -30,6 +31,7 @@ class MovieResultsMapper @Inject constructor(): Mapper<MovieResultsEntity, Movie
                 type.releaseDate,
                 type.genreIds,
                 type.id,
+                type.mediaType,
                 type.originalTitle,
                 type.originalLanguage,
                 type.title,
@@ -40,12 +42,12 @@ class MovieResultsMapper @Inject constructor(): Mapper<MovieResultsEntity, Movie
                 type.voteAverage)
     }
 
-    fun mapFromEntity(list: List<MovieResultsEntity>): List<MovieResults> {
-        return list.map { mapFromEntity(it) }
+    fun mapFromEntity(list: List<MovieResultsEntity>?): List<MovieResults>? {
+        return list?.map { mapFromEntity(it) }
     }
 
-    fun mapToEntity(list: List<MovieResults>): List<MovieResultsEntity> {
-        return list.map { mapToEntity(it) }
+    fun mapToEntity(list: List<MovieResults>?): List<MovieResultsEntity>? {
+        return list?.map { mapToEntity(it) }
     }
 
 }

@@ -13,6 +13,7 @@ class MovieResultsViewMapper @Inject constructor(): Mapper<MovieResultsView, Mov
                 type.releaseDate,
                 type.genreIds,
                 type.id,
+                type.mediaType,
                 type.originalTitle,
                 type.originalLanguage,
                 type.title,
@@ -23,8 +24,8 @@ class MovieResultsViewMapper @Inject constructor(): Mapper<MovieResultsView, Mov
                 type.voteAverage)
     }
 
-    fun mapToView(list: List<MovieResults>): List<MovieResultsView> {
-        return list.map { mapToView(it) }
+    fun mapToView(list: List<MovieResults>?): List<MovieResultsView>? {
+        return list?.map { mapToView(it) }
     }
 
 }

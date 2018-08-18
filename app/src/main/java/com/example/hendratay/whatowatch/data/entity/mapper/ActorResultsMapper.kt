@@ -4,15 +4,16 @@ import com.example.hendratay.whatowatch.data.entity.ActorResultsEntity
 import com.example.hendratay.whatowatch.domain.model.ActorResults
 import javax.inject.Inject
 
-// todo
-class ActorResultsMapper @Inject constructor(private val movieResultsMapper: MovieResultsMapper): Mapper<ActorResultsEntity, ActorResults> {
+class ActorResultsMapper @Inject constructor(private val movieResultsMapper: MovieResultsMapper,
+                                             private val tvResultsMapper: TvResultsMapper):
+        Mapper<ActorResultsEntity, ActorResults> {
 
     override fun mapFromEntity(type: ActorResultsEntity): ActorResults {
         return ActorResults(type.profilePath,
                 type.adult,
                 type.id,
-                type.knownForMovie,
-                type.knownForTv,
+                movieResultsMapper.mapFromEntity(type.knownForMovie),
+                tvResultsMapper.mapFromEntity(type.knownForTv),
                 type.name,
                 type.popularity)
     }
@@ -21,8 +22,8 @@ class ActorResultsMapper @Inject constructor(private val movieResultsMapper: Mov
         return ActorResultsEntity(type.profilePath,
                 type.adult,
                 type.id,
-                type.knownForMovie,
-                type.knownForTv,
+                movieResultsMapper.mapToEntity(type.knownForMovie),
+                tvResultsMapper.mapToEntity(type.knownForTv),
                 type.name,
                 type.popularity)
     }

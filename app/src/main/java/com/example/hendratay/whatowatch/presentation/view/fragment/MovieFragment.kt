@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.hendratay.whatowatch.R
 import com.example.hendratay.whatowatch.presentation.data.Resource
-import com.example.hendratay.whatowatch.presentation.model.PopularMovieView
+import com.example.hendratay.whatowatch.presentation.model.MoviePopularView
 import com.example.hendratay.whatowatch.presentation.model.MovieResultsView
 import com.example.hendratay.whatowatch.presentation.view.adapter.MovieAdapter
 import com.example.hendratay.whatowatch.presentation.viewmodel.PopularMovieViewModel
@@ -66,7 +66,7 @@ class MovieFragment: Fragment() {
     private fun getPopularMovie() {
         popularMovieViewModel = ViewModelProviders.of(this, popularMovieViewModelFactory)[PopularMovieViewModel::class.java]
         popularMovieViewModel.getPopularMovie().observe(this,
-                Observer<Resource<PopularMovieView>> { it ->
+                Observer<Resource<MoviePopularView>> { it ->
                     it?.data?.let {
                         movieList.clear()
                         for (i in 0 until it.results.size) {

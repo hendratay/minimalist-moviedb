@@ -1,13 +1,13 @@
 package com.example.hendratay.whatowatch.domain.interactor
 
-import com.example.hendratay.whatowatch.domain.model.PopularTv
+import com.example.hendratay.whatowatch.domain.model.TvPopular
 import com.example.hendratay.whatowatch.domain.repository.TvRepository
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class GetPopularTv @Inject constructor(private val tvRepository: TvRepository): UseCase<PopularTv, GetPopularTv.Params>() {
+class GetPopularTv @Inject constructor(private val tvRepository: TvRepository): UseCase<TvPopular, GetPopularTv.Params>() {
 
-    override fun buildUseCaseObservable(params: Params?): Observable<PopularTv> {
+    override fun buildUseCaseObservable(params: Params?): Observable<TvPopular> {
         return tvRepository.getPopularTv(params!!.page)
     }
 

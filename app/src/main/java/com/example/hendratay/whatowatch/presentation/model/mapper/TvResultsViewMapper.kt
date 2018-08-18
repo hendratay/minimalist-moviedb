@@ -12,6 +12,7 @@ class TvResultsViewMapper @Inject constructor(): Mapper<TvResultsView, TvResults
                 type.id,
                 type.backdropPath,
                 type.voteAverage,
+                type.mediaType,
                 type.overview,
                 type.firstAirDate,
                 type.originCountry,
@@ -22,8 +23,8 @@ class TvResultsViewMapper @Inject constructor(): Mapper<TvResultsView, TvResults
                 type.originalName)
     }
 
-    fun mapToView(list: List<TvResults>): List<TvResultsView> {
-        return list.map { mapToView(it) }
+    fun mapToView(list: List<TvResults>?): List<TvResultsView>? {
+        return list?.map { mapToView(it) }
     }
 
 }

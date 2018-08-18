@@ -12,6 +12,7 @@ class TvResultsMapper @Inject constructor(): Mapper<TvResultsEntity, TvResults> 
                 type.id,
                 type.backdropPath,
                 type.voteAverage,
+                type.mediaType,
                 type.overview,
                 type.firstAirDate,
                 type.originCountry,
@@ -28,6 +29,7 @@ class TvResultsMapper @Inject constructor(): Mapper<TvResultsEntity, TvResults> 
                 type.id,
                 type.backdropPath,
                 type.voteAverage,
+                type.mediaType,
                 type.overview,
                 type.firstAirDate,
                 type.originCountry,
@@ -38,12 +40,12 @@ class TvResultsMapper @Inject constructor(): Mapper<TvResultsEntity, TvResults> 
                 type.originalName)
     }
 
-    fun mapFromEntity(list: List<TvResultsEntity>): List<TvResults> {
-        return list.map { mapFromEntity(it) }
+    fun mapFromEntity(list: List<TvResultsEntity>?): List<TvResults>? {
+        return list?.map { mapFromEntity(it) }
     }
 
-    fun mapToEntity(list: List<TvResults>): List<TvResultsEntity> {
-        return list.map { mapToEntity(it) }
+    fun mapToEntity(list: List<TvResults>?): List<TvResultsEntity>? {
+        return list?.map { mapToEntity(it) }
     }
 
 }

@@ -7,6 +7,7 @@ data class TvResultsEntity(@SerializedName("poster_path") val posterPath: String
                            @SerializedName("id") val id: Int,
                            @SerializedName("backdrop_path") val backdropPath: String?,
                            @SerializedName("vote_average") val voteAverage: Number,
+                           @SerializedName("media_type") val mediaType: String?,
                            @SerializedName("overview") val overview: String,
                            @SerializedName("first_air_date") val firstAirDate: String,
                            @SerializedName("origin_country") val originCountry: Array<String>,

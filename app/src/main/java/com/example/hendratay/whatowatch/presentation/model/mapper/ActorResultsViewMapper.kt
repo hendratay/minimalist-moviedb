@@ -4,15 +4,16 @@ import com.example.hendratay.whatowatch.domain.model.ActorResults
 import com.example.hendratay.whatowatch.presentation.model.ActorResultsView
 import javax.inject.Inject
 
-// todo
-class ActorResultsViewMapper @Inject constructor(): Mapper<ActorResultsView, ActorResults> {
+class ActorResultsViewMapper @Inject constructor(private val movieResultsViewMapper: MovieResultsViewMapper,
+                                                 private val tvResultsViewMapper: TvResultsViewMapper):
+        Mapper<ActorResultsView, ActorResults> {
 
     override fun mapToView(type: ActorResults): ActorResultsView {
         return ActorResultsView(type.profilePath,
                 type.adult,
                 type.id,
-                type.knownForMovie,
-                type.knownForTv,
+                movieResultsViewMapper.mapToView(type.knownForMovie),
+                tvResultsViewMapper.mapToView(type.knownForTv),
                 type.name,
                 type.popularity)
     }
