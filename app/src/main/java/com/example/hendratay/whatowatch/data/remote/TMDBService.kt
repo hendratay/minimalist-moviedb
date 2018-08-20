@@ -1,5 +1,6 @@
 package com.example.hendratay.whatowatch.data.remote
 
+import com.example.hendratay.whatowatch.data.entity.ActorPopularEntity
 import com.example.hendratay.whatowatch.data.entity.MoviePopularEntity
 import com.example.hendratay.whatowatch.data.entity.TvPopularEntity
 import io.reactivex.Observable
@@ -13,5 +14,8 @@ interface TMDBService {
 
     @GET("tv/popular")
     fun popularTv(@Query("page") page: Int): Observable<TvPopularEntity>
+
+    @GET("person/popular")
+    fun popularActor(@Query("page") page: Int): Observable<ActorPopularEntity>
 
 }

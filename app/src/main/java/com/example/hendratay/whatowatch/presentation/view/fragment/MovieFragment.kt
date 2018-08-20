@@ -67,10 +67,10 @@ class MovieFragment: Fragment() {
         popularMovieViewModel = ViewModelProviders.of(this, popularMovieViewModelFactory)[PopularMovieViewModel::class.java]
         popularMovieViewModel.getPopularMovie().observe(this,
                 Observer<Resource<MoviePopularView>> { it ->
-                    it?.data?.let {
+                    it?.data?.results?.let {
                         movieList.clear()
-                        for (i in 0 until it.results.size) {
-                            movieList.add(it.results[i])
+                        for (i in 0 until it.size) {
+                            movieList.add(it[i])
                         }
                         adapter.notifyDataSetChanged()
                     }

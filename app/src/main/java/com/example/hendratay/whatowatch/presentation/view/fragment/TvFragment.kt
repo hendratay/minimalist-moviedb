@@ -62,10 +62,10 @@ class TvFragment: Fragment() {
         popularTvViewModel = ViewModelProviders.of(this, popularTvViewModelFactory)[PopularTvViewModel::class.java]
         popularTvViewModel.getPopularMovie().observe(this,
                 Observer<Resource<TvPopularView>> { it ->
-                    it?.data?.let {
+                    it?.data?.results?.let {
                         tvList.clear()
-                        for (i in 0 until it.results.size) {
-                            tvList.add(it.results[i])
+                        for (i in 0 until it.size) {
+                            tvList.add(it[i])
                         }
                         adapter.notifyDataSetChanged()
                     }

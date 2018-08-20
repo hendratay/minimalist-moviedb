@@ -1,9 +1,6 @@
 package com.example.hendratay.whatowatch.di
 
-import com.example.hendratay.whatowatch.presentation.view.fragment.MovieFragment
-import com.example.hendratay.whatowatch.presentation.view.fragment.MovieFragmentModule
-import com.example.hendratay.whatowatch.presentation.view.fragment.TvFragment
-import com.example.hendratay.whatowatch.presentation.view.fragment.TvFragmentModule
+import com.example.hendratay.whatowatch.presentation.view.fragment.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -15,5 +12,8 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = [TvFragmentModule::class])
     abstract fun bindTvFragment(): TvFragment
+
+    @ContributesAndroidInjector(modules = [ActorFragmentModule::class])
+    abstract fun bindActorFragment(): ActorFragment
 
 }
