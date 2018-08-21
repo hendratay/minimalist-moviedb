@@ -43,6 +43,11 @@ class TvFragment: Fragment() {
         getPopularTv()
     }
 
+    override fun onPause() {
+        super.onPause()
+        requireActivity().bottom_navigation_view.visibility = View.VISIBLE
+    }
+
     private fun setupRecyclerView() {
         rv_tv.layoutManager = LinearLayoutManager(requireContext())
         adapter = TvAdapter(tvList)
