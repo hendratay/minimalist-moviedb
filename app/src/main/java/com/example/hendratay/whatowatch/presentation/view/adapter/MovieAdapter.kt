@@ -9,11 +9,13 @@ import com.example.hendratay.whatowatch.presentation.model.MovieResultsView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MovieAdapter(private val movieList: List<MovieResultsView>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val movieList: List<MovieResultsView>,
+                   private val clickListener: (MovieResultsView) -> Unit): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(movieResultsView: MovieResultsView) {
+        fun bind(movieResultsView: MovieResultsView, clickListener: (MovieResultsView) -> Unit) {
             Picasso.get().load("http://image.tmdb.org/t/p/w780/${movieResultsView.backdropPath}").into(itemView.img_movie_backdrop)
+            itemView.setOnClickListener { clickListener(movieResultsView) }
         }
     }
 
@@ -26,7 +28,7 @@ class MovieAdapter(private val movieList: List<MovieResultsView>): RecyclerView.
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(movieList[position])
+        holder.bind(movieList[position], clickListener)
     }
 
 }

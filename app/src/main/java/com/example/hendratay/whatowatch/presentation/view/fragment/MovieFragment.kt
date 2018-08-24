@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.hendratay.whatowatch.R
 import com.example.hendratay.whatowatch.presentation.data.Resource
 import com.example.hendratay.whatowatch.presentation.model.MoviePopularView
@@ -50,7 +51,7 @@ class MovieFragment: Fragment() {
 
     private fun setupRecyclerView() {
         rv_movie.layoutManager = LinearLayoutManager(requireContext())
-        adapter = MovieAdapter(movieList)
+        adapter = MovieAdapter(movieList) { getMovieDetail(it) }
         rv_movie.adapter = adapter
         rv_movie.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
@@ -75,6 +76,9 @@ class MovieFragment: Fragment() {
                         adapter.notifyDataSetChanged()
                     }
                 })
+    }
+
+    private fun getMovieDetail(movieResultsView: MovieResultsView) {
     }
 
 }
