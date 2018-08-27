@@ -9,9 +9,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.hendratay.whatowatch.R
 import com.example.hendratay.whatowatch.presentation.data.Resource
+import com.example.hendratay.whatowatch.presentation.data.ResourceState
 import com.example.hendratay.whatowatch.presentation.model.MoviePopularView
 import com.example.hendratay.whatowatch.presentation.model.MovieResultsView
 import com.example.hendratay.whatowatch.presentation.view.adapter.MovieAdapter
@@ -68,14 +68,40 @@ class MovieFragment: Fragment() {
         popularMovieViewModel = ViewModelProviders.of(this, popularMovieViewModelFactory)[PopularMovieViewModel::class.java]
         popularMovieViewModel.getPopularMovie().observe(this,
                 Observer<Resource<MoviePopularView>> { it ->
-                    it?.data?.results?.let {
-                        movieList.clear()
-                        for (i in 0 until it.size) {
-                            movieList.add(it[i])
-                        }
-                        adapter.notifyDataSetChanged()
+                    if(view?.parent != null) {
+                        it?.let { handleMoviePopularViewState(it.status, it.data) }
                     }
                 })
+    }
+
+    private fun handleMoviePopularViewState(resourceState: ResourceState, data: MoviePopularView?) {
+        when(resourceState) {
+            ResourceState.LOADING -> setupScreenForLoading()
+            ResourceState.SUCCESS -> setupScreenForSuccess(data)
+            ResourceState.ERROR -> setupScreenForError()
+        }
+    }
+
+    private fun setupScreenForLoading() {
+        rv_movie.visibility = View.GONE
+        progress_bar_movie.visibility = View.VISIBLE
+    }
+
+    private fun setupScreenForSuccess(data: MoviePopularView?) {
+        rv_movie.visibility = View.VISIBLE
+        progress_bar_movie.visibility = View.GONE
+        data?.results?.let {
+            movieList.clear()
+            for (i in 0 until it.size) {
+                movieList.add(it[i])
+            }
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun setupScreenForError() {
+        rv_movie.visibility = View.GONE
+        progress_bar_movie.visibility = View.GONE
     }
 
     private fun getMovieDetail(movieResultsView: MovieResultsView) {
