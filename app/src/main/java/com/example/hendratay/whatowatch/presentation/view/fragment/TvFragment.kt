@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.hendratay.whatowatch.R
 import com.example.hendratay.whatowatch.presentation.data.Resource
+import com.example.hendratay.whatowatch.presentation.data.ResourceState
 import com.example.hendratay.whatowatch.presentation.model.TvPopularView
 import com.example.hendratay.whatowatch.presentation.model.TvResultsView
 import com.example.hendratay.whatowatch.presentation.view.adapter.TvAdapter
@@ -67,14 +68,38 @@ class TvFragment: Fragment() {
         popularTvViewModel = ViewModelProviders.of(this, popularTvViewModelFactory)[PopularTvViewModel::class.java]
         popularTvViewModel.getPopularMovie().observe(this,
                 Observer<Resource<TvPopularView>> { it ->
-                    it?.data?.results?.let {
-                        tvList.clear()
-                        for (i in 0 until it.size) {
-                            tvList.add(it[i])
-                        }
-                        adapter.notifyDataSetChanged()
+                    if(view?.parent != null) {
+                        it?.let { handleTvPopularViewState(it.status, it.data) }
                     }
                 })
+    }
+
+    private fun handleTvPopularViewState(resourceState: ResourceState, data: TvPopularView?) {
+        when(resourceState) {
+            ResourceState.LOADING -> setupScreenForLoading()
+            ResourceState.SUCCESS -> setupScreenForSuccess(data)
+            ResourceState.ERROR -> setupScreenForError()
+        }
+    }
+
+    private fun setupScreenForLoading() {
+        rv_tv.visibility = View.GONE
+        progress_bar_tv.visibility = View.VISIBLE
+    }
+
+    private fun setupScreenForSuccess(data: TvPopularView?) {
+        rv_tv.visibility = View.VISIBLE
+        progress_bar_tv.visibility = View.GONE
+        data?.results?.let {
+            tvList.clear()
+            for (i in 0 until it.size) tvList.add(it[i])
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun setupScreenForError() {
+        rv_tv.visibility = View.GONE
+        progress_bar_tv.visibility = View.GONE
     }
 
 }

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.hendratay.whatowatch.R
 import com.example.hendratay.whatowatch.presentation.data.Resource
+import com.example.hendratay.whatowatch.presentation.data.ResourceState
 import com.example.hendratay.whatowatch.presentation.model.ActorPopularView
 import com.example.hendratay.whatowatch.presentation.model.ActorResultsView
 import com.example.hendratay.whatowatch.presentation.view.adapter.ActorAdapter
@@ -52,12 +53,38 @@ class ActorFragment: Fragment() {
         popularActorViewModel = ViewModelProviders.of(this, popularActorViewModelFactory)[PopularActorViewModel::class.java]
         popularActorViewModel.getPopularActor().observe(this,
                 Observer<Resource<ActorPopularView>> { it ->
-                    it?.data?.results?.let {
-                        actorList.clear()
-                        for (i in 0 until it.size) actorList.add(it[i])
-                        adapter.notifyDataSetChanged()
+                    if(view?.parent != null) {
+                        it?.let { handleActorPopularViewState(it.status, it.data) }
                     }
                 })
+    }
+
+    private fun handleActorPopularViewState(resourceState: ResourceState, data: ActorPopularView?) {
+        when(resourceState) {
+            ResourceState.LOADING -> setupScreenForLoading()
+            ResourceState.SUCCESS -> setupScreenForSuccess(data)
+            ResourceState.ERROR -> setupScreenForError()
+        }
+    }
+
+    private fun setupScreenForLoading() {
+        rv_actor.visibility = View.GONE
+        progress_bar_actor.visibility = View.VISIBLE
+    }
+
+    private fun setupScreenForSuccess(data: ActorPopularView?) {
+        rv_actor.visibility = View.VISIBLE
+        progress_bar_actor.visibility = View.GONE
+        data?.results?.let {
+            actorList.clear()
+            for (i in 0 until it.size) actorList.add(it[i])
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun setupScreenForError() {
+        rv_actor.visibility = View.GONE
+        progress_bar_actor.visibility = View.GONE
     }
 
 }
