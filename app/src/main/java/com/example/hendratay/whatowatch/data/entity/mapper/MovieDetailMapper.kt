@@ -4,10 +4,10 @@ import com.example.hendratay.whatowatch.data.entity.MovieDetailEntity
 import com.example.hendratay.whatowatch.domain.model.MovieDetail
 import javax.inject.Inject
 
-class MovieDetailMapper @Inject constructor(private val genreMapper: GenreMapper,
+class MovieDetailMapper @Inject constructor(private val genresMapper: GenresMapper,
                                             private val productionCompaniesMapper: ProductionCompaniesMapper,
                                             private val productionCountriesMapper: ProductionCountriesMapper,
-                                            private val spokenLanguageMapper: SpokenLanguageMapper):
+                                            private val spokenLanguagesMapper: SpokenLanguagesMapper):
         Mapper<MovieDetailEntity, MovieDetail> {
 
     override fun mapFromEntity(type: MovieDetailEntity): MovieDetail {
@@ -15,7 +15,7 @@ class MovieDetailMapper @Inject constructor(private val genreMapper: GenreMapper
                 type.backdropPath,
                 type.belongsToCollection,
                 type.budget,
-                genreMapper.mapFromEntity(type.genre),
+                genresMapper.mapFromEntity(type.genres),
                 type.homepage,
                 type.id,
                 type.imdbId,
@@ -29,7 +29,7 @@ class MovieDetailMapper @Inject constructor(private val genreMapper: GenreMapper
                 type.releaseDate,
                 type.revenue,
                 type.runtime,
-                spokenLanguageMapper.mapFromEntity(type.spokenLanguage),
+                spokenLanguagesMapper.mapFromEntity(type.spokenLanguages),
                 type.status,
                 type.tagline,
                 type.title,
@@ -43,11 +43,11 @@ class MovieDetailMapper @Inject constructor(private val genreMapper: GenreMapper
                 type.backdropPath,
                 type.belongsToCollection,
                 type.budget,
-                genreMapper.mapToEntity(type.genres),
+                genresMapper.mapToEntity(type.genres),
                 type.homepage,
                 type.id,
                 type.imdbId,
-                type.originalLangauge,
+                type.originalLanguage,
                 type.originalTitle,
                 type.overview,
                 type.popularity,
@@ -57,7 +57,7 @@ class MovieDetailMapper @Inject constructor(private val genreMapper: GenreMapper
                 type.releaseDate,
                 type.revenue,
                 type.runtime,
-                spokenLanguageMapper.mapToEntity(type.spokenLanguage),
+                spokenLanguagesMapper.mapToEntity(type.spokenLanguages),
                 type.status,
                 type.tagline,
                 type.title,

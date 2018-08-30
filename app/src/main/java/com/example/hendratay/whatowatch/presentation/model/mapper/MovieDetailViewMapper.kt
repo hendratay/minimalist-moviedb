@@ -4,10 +4,10 @@ import com.example.hendratay.whatowatch.domain.model.MovieDetail
 import com.example.hendratay.whatowatch.presentation.model.MovieDetailView
 import javax.inject.Inject
 
-class MovieDetailViewMapper @Inject constructor(private val genreViewMapper: GenreViewMapper,
+class MovieDetailViewMapper @Inject constructor(private val genresViewMapper: GenresViewMapper,
                                                 private val productionCompaniesViewMapper: ProductionCompaniesViewMapper,
                                                 private val productionCountriesViewMapper: ProductionCountriesViewMapper,
-                                                private val spokenLanguageViewMapper: SpokenLanguageViewMapper):
+                                                private val spokenLanguagesViewMapper: SpokenLanguagesViewMapper):
         Mapper<MovieDetailView, MovieDetail> {
 
     override fun mapToView(type: MovieDetail): MovieDetailView {
@@ -15,11 +15,11 @@ class MovieDetailViewMapper @Inject constructor(private val genreViewMapper: Gen
                 type.backdropPath,
                 type.belongsToCollection,
                 type.budget,
-                genreViewMapper.mapToView(type.genres),
+                genresViewMapper.mapToView(type.genres),
                 type.homepage,
                 type.id,
                 type.imdbId,
-                type.originalLangauge,
+                type.originalLanguage,
                 type.originalTitle,
                 type.overview,
                 type.popularity,
@@ -29,7 +29,7 @@ class MovieDetailViewMapper @Inject constructor(private val genreViewMapper: Gen
                 type.releaseDate,
                 type.revenue,
                 type.runtime,
-                spokenLanguageViewMapper.mapToView(type.spokenLanguage),
+                spokenLanguagesViewMapper.mapToView(type.spokenLanguages),
                 type.status,
                 type.tagline,
                 type.title,

@@ -1,12 +1,10 @@
 package com.example.hendratay.whatowatch.presentation.model
 
-import com.example.hendratay.whatowatch.domain.model.SpokenLanguage
-
 data class MovieDetailView(val adult: Boolean,
                            val backdropPath: String?,
                            val belongsToCollection: Any?,
                            val budget: Int,
-                           val genres: List<GenreView>,
+                           val genres: List<GenresView>,
                            val homepage: String?,
                            val id: Int,
                            val imdbId: String?,
@@ -20,7 +18,7 @@ data class MovieDetailView(val adult: Boolean,
                            val releaseDate: String,
                            val revenue: Int,
                            val runtime: Int?,
-                           val spokenLanguage: List<SpokenLanguageView>,
+                           val spokenLanguages: List<SpokenLanguagesView>,
                            val status: String,
                            val tagline: String?,
                            val title: String,
