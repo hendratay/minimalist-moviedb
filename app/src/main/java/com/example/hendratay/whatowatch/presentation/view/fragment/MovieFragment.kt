@@ -14,6 +14,7 @@ import com.example.hendratay.whatowatch.presentation.data.Resource
 import com.example.hendratay.whatowatch.presentation.data.ResourceState
 import com.example.hendratay.whatowatch.presentation.model.MoviePopularView
 import com.example.hendratay.whatowatch.presentation.model.MovieResultsView
+import com.example.hendratay.whatowatch.presentation.view.activity.MainActivity
 import com.example.hendratay.whatowatch.presentation.view.adapter.MovieAdapter
 import com.example.hendratay.whatowatch.presentation.viewmodel.PopularMovieViewModel
 import com.example.hendratay.whatowatch.presentation.viewmodel.PopularMovieViewModelFactory
@@ -105,6 +106,15 @@ class MovieFragment: Fragment() {
     }
 
     private fun getMovieDetail(movieResultsView: MovieResultsView) {
+        val args = Bundle()
+        val movieDetailFragment = MovieDetailFragment()
+        args.putInt("movie_id", movieResultsView.id)
+        movieDetailFragment.arguments = args
+        (activity as MainActivity).supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, movieDetailFragment)
+                .addToBackStack(null)
+                .commit()
     }
 
 }

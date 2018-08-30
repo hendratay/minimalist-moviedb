@@ -19,8 +19,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if(bottom_navigation_view.selectedItemId == R.id.action_home) finish()
-        else bottom_navigation_view.selectedItemId = R.id.action_home
+        when(supportFragmentManager.findFragmentById(R.id.fragment_container)) {
+            is HomeFragment -> finish()
+            is MovieDetailFragment -> {
+                bottom_navigation_view.visibility = View.VISIBLE
+                bottom_navigation_view.selectedItemId = R.id.action_movie
+            }
+            else -> bottom_navigation_view.selectedItemId = R.id.action_home
+        }
     }
 
     private fun drawBehindStatusBar() {

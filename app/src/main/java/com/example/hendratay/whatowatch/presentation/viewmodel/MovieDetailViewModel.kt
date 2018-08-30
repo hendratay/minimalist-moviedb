@@ -18,10 +18,7 @@ class MovieDetailViewModel @Inject constructor(private val getMovieDetail: GetMo
         ViewModel() {
 
     private val movieDetailLiveData: MutableLiveData<Resource<MovieDetailView>> = MutableLiveData()
-
-    init {
-        fetchMovieDetail()
-    }
+    private var movieId: Int = 0
 
     override fun onCleared() {
         getMovieDetail.dispose()
@@ -30,9 +27,14 @@ class MovieDetailViewModel @Inject constructor(private val getMovieDetail: GetMo
 
     fun getMovieDetail() = movieDetailLiveData
 
+    fun setMovieId(movieId: Int) {
+        this.movieId = movieId
+        fetchMovieDetail()
+    }
+
     private fun fetchMovieDetail() {
         movieDetailLiveData.postValue(Resource(ResourceState.LOADING, null, null))
-        getMovieDetail.execute(MovieDetailObserver(), GetMovieDetail.Params.forMovie(299536))
+        getMovieDetail.execute(MovieDetailObserver(), GetMovieDetail.Params.forMovie(movieId))
     }
 
     inner class MovieDetailObserver: DefaultObserver<MovieDetail>() {
