@@ -16,6 +16,9 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = [TvFragmentModule::class])
     abstract fun bindTvFragment(): TvFragment
 
+    @ContributesAndroidInjector(modules = [TvDetailFragmentModule::class])
+    abstract fun bindTvDetailFragment(): TvDetailFragment
+
     @ContributesAndroidInjector(modules = [ActorFragmentModule::class])
     abstract fun bindActorFragment(): ActorFragment
 

@@ -4,4 +4,4 @@ data class CreatedByView(val id: Int,
                          val creditId: String,
                          val name: String,
                          val gender: Int,
-                         val profilePath: String)
+                         val profilePath: String?)

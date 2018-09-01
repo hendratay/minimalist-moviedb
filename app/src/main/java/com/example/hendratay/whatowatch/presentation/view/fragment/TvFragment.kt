@@ -14,6 +14,7 @@ import com.example.hendratay.whatowatch.presentation.data.Resource
 import com.example.hendratay.whatowatch.presentation.data.ResourceState
 import com.example.hendratay.whatowatch.presentation.model.TvPopularView
 import com.example.hendratay.whatowatch.presentation.model.TvResultsView
+import com.example.hendratay.whatowatch.presentation.view.activity.MainActivity
 import com.example.hendratay.whatowatch.presentation.view.adapter.TvAdapter
 import com.example.hendratay.whatowatch.presentation.viewmodel.PopularTvViewModel
 import com.example.hendratay.whatowatch.presentation.viewmodel.PopularTvViewModelFactory
@@ -51,7 +52,7 @@ class TvFragment: Fragment() {
 
     private fun setupRecyclerView() {
         rv_tv.layoutManager = LinearLayoutManager(requireContext())
-        adapter = TvAdapter(tvList)
+        adapter = TvAdapter(tvList) { getTvDetail(it) }
         rv_tv.adapter = adapter
         rv_tv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
@@ -100,6 +101,18 @@ class TvFragment: Fragment() {
     private fun setupScreenForError() {
         rv_tv.visibility = View.GONE
         progress_bar_tv.visibility = View.GONE
+    }
+
+    private fun getTvDetail(tvResultsView: TvResultsView) {
+        val args = Bundle()
+        val tvDetailFragment = TvDetailFragment()
+        args.putInt("tv_id", tvResultsView.id)
+        tvDetailFragment.arguments = args
+        (activity as MainActivity).supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, tvDetailFragment)
+                .addToBackStack(null)
+                .commit()
     }
 
 }

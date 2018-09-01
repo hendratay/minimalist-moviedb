@@ -7,9 +7,9 @@ data class LastEpisodeToAirEntity(@SerializedName("air_date") val airDate: Strin
                                   @SerializedName("id") val id: Int,
                                   @SerializedName("name") val name: String,
                                   @SerializedName("overview") val overview: String,
-                                  @SerializedName("production_code") val productionCode: String,
+                                  @SerializedName("production_code") val productionCode: String?,
                                   @SerializedName("season_number") val seasonNumber: Int,
                                   @SerializedName("show_id") val showId: Int,
-                                  @SerializedName("still_path") val stillPath: String,
+                                  @SerializedName("still_path") val stillPath: String?,
                                   @SerializedName("vote_average") val voteAverage: Number,
                                   @SerializedName("vote_count") val voteCount: Int)

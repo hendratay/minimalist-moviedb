@@ -9,11 +9,13 @@ import com.example.hendratay.whatowatch.presentation.model.TvResultsView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_tv.view.*
 
-class TvAdapter(private val tvList: List<TvResultsView>): RecyclerView.Adapter<TvAdapter.TvViewHolder>() {
+class TvAdapter(private val tvList: List<TvResultsView>,
+                private val clickListener: (TvResultsView) -> Unit): RecyclerView.Adapter<TvAdapter.TvViewHolder>() {
 
     inner class TvViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(tvResultsView: TvResultsView) {
+        fun bind(tvResultsView: TvResultsView, clickListener: (TvResultsView) -> Unit) {
             Picasso.get().load("http://image.tmdb.org/t/p/w780/${tvResultsView.backdropPath}").into(itemView.img_tv_backdrop)
+            itemView.setOnClickListener { clickListener(tvResultsView) }
         }
     }
 
@@ -26,7 +28,7 @@ class TvAdapter(private val tvList: List<TvResultsView>): RecyclerView.Adapter<T
     }
 
     override fun onBindViewHolder(holder: TvViewHolder, position: Int) {
-        holder.bind(tvList[position])
+        holder.bind(tvList[position], clickListener)
     }
 
 }

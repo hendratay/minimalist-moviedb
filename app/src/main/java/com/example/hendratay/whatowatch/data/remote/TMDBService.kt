@@ -1,9 +1,6 @@
 package com.example.hendratay.whatowatch.data.remote
 
-import com.example.hendratay.whatowatch.data.entity.ActorPopularEntity
-import com.example.hendratay.whatowatch.data.entity.MovieDetailEntity
-import com.example.hendratay.whatowatch.data.entity.MoviePopularEntity
-import com.example.hendratay.whatowatch.data.entity.TvPopularEntity
+import com.example.hendratay.whatowatch.data.entity.*
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,6 +16,9 @@ interface TMDBService {
 
     @GET("tv/popular")
     fun popularTv(@Query("page") page: Int): Observable<TvPopularEntity>
+
+    @GET("tv/{tv_id}")
+    fun tvDetail(@Path("tv_id") tvId: Int): Observable<TvDetailEntity>
 
     @GET("person/popular")
     fun popularActor(@Query("page") page: Int): Observable<ActorPopularEntity>

@@ -1,9 +1,6 @@
 package com.example.hendratay.whatowatch.di
 
-import com.example.hendratay.whatowatch.data.entity.mapper.ActorPopularMapper
-import com.example.hendratay.whatowatch.data.entity.mapper.MovieDetailMapper
-import com.example.hendratay.whatowatch.data.entity.mapper.MoviePopularMapper
-import com.example.hendratay.whatowatch.data.entity.mapper.TvPopularMapper
+import com.example.hendratay.whatowatch.data.entity.mapper.*
 import com.example.hendratay.whatowatch.data.repository.ActorDataRepository
 import com.example.hendratay.whatowatch.data.repository.MovieDataRepository
 import com.example.hendratay.whatowatch.data.repository.TvDataRepository
@@ -28,8 +25,9 @@ class ApplicationModule {
 
     @Provides
     fun provideTvRepository(tvDataStoreFactory: TvDataStoreFactory,
-                            tvPopularMapper: TvPopularMapper): TvRepository {
-        return TvDataRepository(tvDataStoreFactory, tvPopularMapper)
+                            tvPopularMapper: TvPopularMapper,
+                            tvDetailMapper: TvDetailMapper): TvRepository {
+        return TvDataRepository(tvDataStoreFactory, tvPopularMapper, tvDetailMapper)
     }
 
     @Provides
