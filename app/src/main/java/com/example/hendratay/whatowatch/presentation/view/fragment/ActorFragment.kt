@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.example.hendratay.whatowatch.presentation.view.adapter.ActorAdapter
 import com.example.hendratay.whatowatch.presentation.viewmodel.PopularActorViewModel
 import com.example.hendratay.whatowatch.presentation.viewmodel.PopularActorViewModelFactory
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_actor.*
 import javax.inject.Inject
 
@@ -46,7 +48,15 @@ class ActorFragment: Fragment() {
         adapter = ActorAdapter(actorList)
         rv_actor.layoutManager = GridLayoutManager(requireContext(), 3)
         rv_actor.adapter = adapter
-
+        rv_actor.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                if(dy > 0 && requireActivity().bottom_navigation_view.isShown) {
+                    requireActivity().bottom_navigation_view?.visibility = View.GONE
+                } else if(dy < 0) {
+                    requireActivity().bottom_navigation_view.visibility = View.VISIBLE
+                }
+            }
+        })
     }
 
     private fun getPopularActor() {
