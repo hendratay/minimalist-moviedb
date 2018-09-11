@@ -23,4 +23,7 @@ interface TMDBService {
     @GET("person/popular")
     fun popularActor(@Query("page") page: Int): Observable<ActorPopularEntity>
 
+    @GET("person/{person_id}")
+    fun actorDetail(@Path("person_id") actorId: Int): Observable<ActorDetailEntity>
+
 }
