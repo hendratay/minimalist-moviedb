@@ -6,7 +6,7 @@ import io.reactivex.Observable
 
 interface ActorRepository {
 
-    fun getPopularActor (page: Int): Observable<ActorPopular>
+    fun getActorPopular (page: Int): Observable<ActorPopular>
 
     fun getActorDetail (actorId: Int): Observable<ActorDetail>
 

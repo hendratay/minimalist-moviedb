@@ -7,8 +7,8 @@ import io.reactivex.Observable
 
 class TvCloudDataStore: TvDataStore {
 
-    override fun getPopularTv(page: Int): Observable<TvPopularEntity> {
-        return TMDBServiceFactory.makeService().popularTv(page)
+    override fun getTvPopular(page: Int): Observable<TvPopularEntity> {
+        return TMDBServiceFactory.makeService().tvPopular(page)
     }
 
     override fun getTvDetail(tvId: Int): Observable<TvDetailEntity> {

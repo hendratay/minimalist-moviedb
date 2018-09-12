@@ -6,8 +6,8 @@ import io.reactivex.Observable
 
 interface TvRepository {
 
-    fun getPopularTv(page: Int): Observable<TvPopular>
+    fun getTvPopular(page: Int): Observable<TvPopular>
 
-    fun getTvDetail (tvId: Int): Observable<TvDetail>
+    fun getTvDetail(tvId: Int): Observable<TvDetail>
 
 }

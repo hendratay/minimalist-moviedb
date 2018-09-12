@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.util.Log
 import com.example.hendratay.whatowatch.domain.interactor.DefaultObserver
-import com.example.hendratay.whatowatch.domain.interactor.GetPopularMovie
+import com.example.hendratay.whatowatch.domain.interactor.GetMoviePopular
 import com.example.hendratay.whatowatch.domain.model.MoviePopular
 import com.example.hendratay.whatowatch.presentation.data.Resource
 import com.example.hendratay.whatowatch.presentation.data.ResourceState
@@ -13,29 +13,29 @@ import com.example.hendratay.whatowatch.presentation.model.MoviePopularView
 import com.example.hendratay.whatowatch.presentation.model.mapper.MoviePopularViewMapper
 import javax.inject.Inject
 
-class PopularMovieViewModel @Inject constructor(private val getPopularMovie: GetPopularMovie,
+class MoviePopularViewModel @Inject constructor(private val getMoviePopular: GetMoviePopular,
                                                 private val moviePopularViewMapper: MoviePopularViewMapper):
         ViewModel() {
 
     private val moviePopularLiveData: MutableLiveData<Resource<MoviePopularView>> = MutableLiveData()
 
     init {
-        fetchPopularMovie()
+        fetchMoviePopular()
     }
 
     override fun onCleared() {
-        getPopularMovie.dispose()
+        getMoviePopular.dispose()
         super.onCleared()
     }
 
-    fun getPopularMovie() = moviePopularLiveData
+    fun getMoviePopular() = moviePopularLiveData
 
-    private fun fetchPopularMovie() {
+    private fun fetchMoviePopular() {
         moviePopularLiveData.postValue(Resource(ResourceState.LOADING, null, null))
-        getPopularMovie.execute(PopularMovieObserver(), GetPopularMovie.Params.forPage(1))
+        getMoviePopular.execute(MoviePopularObserver(), GetMoviePopular.Params.forPage(1))
     }
 
-    inner class PopularMovieObserver: DefaultObserver<MoviePopular>() {
+    inner class MoviePopularObserver: DefaultObserver<MoviePopular>() {
         override fun onComplete() {
         }
 
@@ -52,13 +52,13 @@ class PopularMovieViewModel @Inject constructor(private val getPopularMovie: Get
 
 }
 
-open class PopularMovieViewModelFactory(
-        private val getPopularMovie: GetPopularMovie,
+open class MoviePopularViewModelFactory(
+        private val getMoviePopular: GetMoviePopular,
         private val moviePopularViewMapper: MoviePopularViewMapper): ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(PopularMovieViewModel::class.java)) {
-            return PopularMovieViewModel(getPopularMovie, moviePopularViewMapper) as T
+        if (modelClass.isAssignableFrom(MoviePopularViewModel::class.java)) {
+            return MoviePopularViewModel(getMoviePopular, moviePopularViewMapper) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

@@ -14,8 +14,8 @@ class TvDataRepository @Inject constructor(private val factory: TvDataStoreFacto
                                            private val tvDetailMapper: TvDetailMapper):
         TvRepository {
 
-    override fun getPopularTv(page: Int): Observable<TvPopular> {
-        return factory.create().getPopularTv(page)
+    override fun getTvPopular(page: Int): Observable<TvPopular> {
+        return factory.create().getTvPopular(page)
                 .map { tvPopularMapper.mapFromEntity(it) }
     }
 

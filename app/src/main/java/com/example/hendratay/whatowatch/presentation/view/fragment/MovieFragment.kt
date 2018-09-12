@@ -16,8 +16,8 @@ import com.example.hendratay.whatowatch.presentation.model.MoviePopularView
 import com.example.hendratay.whatowatch.presentation.model.MovieResultsView
 import com.example.hendratay.whatowatch.presentation.view.activity.MainActivity
 import com.example.hendratay.whatowatch.presentation.view.adapter.MovieAdapter
-import com.example.hendratay.whatowatch.presentation.viewmodel.PopularMovieViewModel
-import com.example.hendratay.whatowatch.presentation.viewmodel.PopularMovieViewModelFactory
+import com.example.hendratay.whatowatch.presentation.viewmodel.MoviePopularViewModel
+import com.example.hendratay.whatowatch.presentation.viewmodel.MoviePopularViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_movie.*
@@ -25,8 +25,8 @@ import javax.inject.Inject
 
 class MovieFragment: Fragment() {
 
-    @Inject lateinit var popularMovieViewModelFactory: PopularMovieViewModelFactory
-    private lateinit var popularMovieViewModel: PopularMovieViewModel
+    @Inject lateinit var moviePopularViewModelFactory: MoviePopularViewModelFactory
+    private lateinit var moviePopularViewModel: MoviePopularViewModel
     private lateinit var adapter: MovieAdapter
     private var movieList: MutableList<MovieResultsView> = mutableListOf()
 
@@ -66,8 +66,8 @@ class MovieFragment: Fragment() {
     }
 
     private fun getPopularMovie() {
-        popularMovieViewModel = ViewModelProviders.of(this, popularMovieViewModelFactory)[PopularMovieViewModel::class.java]
-        popularMovieViewModel.getPopularMovie().observe(this,
+        moviePopularViewModel = ViewModelProviders.of(this, moviePopularViewModelFactory)[MoviePopularViewModel::class.java]
+        moviePopularViewModel.getMoviePopular().observe(this,
                 Observer<Resource<MoviePopularView>> { it ->
                     if(view?.parent != null) {
                         it?.let { handleMoviePopularViewState(it.status, it.data) }

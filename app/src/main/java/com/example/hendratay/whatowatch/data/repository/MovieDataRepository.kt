@@ -14,8 +14,8 @@ class MovieDataRepository @Inject constructor(private val factory: MovieDataStor
                                               private val movieDetailMapper: MovieDetailMapper):
         MovieRepository {
 
-    override fun getPopularMovie(page: Int): Observable<MoviePopular> {
-        return factory.create().getPopularMovie(page)
+    override fun getMoviePopular(page: Int): Observable<MoviePopular> {
+        return factory.create().getMoviePopular(page)
                 .map { moviePopularMapper.mapFromEntity(it) }
     }
 

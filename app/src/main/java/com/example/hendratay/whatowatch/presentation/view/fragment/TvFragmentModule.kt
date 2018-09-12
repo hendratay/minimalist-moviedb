@@ -1,8 +1,8 @@
 package com.example.hendratay.whatowatch.presentation.view.fragment
 
-import com.example.hendratay.whatowatch.domain.interactor.GetPopularTv
+import com.example.hendratay.whatowatch.domain.interactor.GetTvPopular
 import com.example.hendratay.whatowatch.presentation.model.mapper.TvPopularViewMapper
-import com.example.hendratay.whatowatch.presentation.viewmodel.PopularTvViewModelFactory
+import com.example.hendratay.whatowatch.presentation.viewmodel.TvPopularViewModelFactory
 import dagger.Module
 import dagger.Provides
 
@@ -13,10 +13,10 @@ class TvFragmentModule {
     companion object {
         @JvmStatic
         @Provides
-        fun providePopularTvViewModelFactory(getPopularTv: GetPopularTv,
+        fun provideTvPopularViewModelFactory(getTvPopular: GetTvPopular,
                                              tvPopularViewMapper: TvPopularViewMapper):
-                PopularTvViewModelFactory {
-            return PopularTvViewModelFactory(getPopularTv, tvPopularViewMapper)
+                TvPopularViewModelFactory {
+            return TvPopularViewModelFactory(getTvPopular, tvPopularViewMapper)
         }
     }
 

@@ -6,7 +6,7 @@ import io.reactivex.Observable
 
 interface MovieDataStore {
 
-    fun getPopularMovie(page: Int): Observable<MoviePopularEntity>
+    fun getMoviePopular(page: Int): Observable<MoviePopularEntity>
 
     fun getMovieDetail(movieId: Int): Observable<MovieDetailEntity>
 

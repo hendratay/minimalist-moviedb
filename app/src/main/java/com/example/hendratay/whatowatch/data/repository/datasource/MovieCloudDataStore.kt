@@ -7,8 +7,8 @@ import io.reactivex.Observable
 
 class MovieCloudDataStore: MovieDataStore {
 
-    override fun getPopularMovie(page: Int): Observable<MoviePopularEntity> {
-        return TMDBServiceFactory.makeService().popularMovie(page)
+    override fun getMoviePopular(page: Int): Observable<MoviePopularEntity> {
+        return TMDBServiceFactory.makeService().moviePopular(page)
     }
 
     override fun getMovieDetail(movieId: Int): Observable<MovieDetailEntity> {

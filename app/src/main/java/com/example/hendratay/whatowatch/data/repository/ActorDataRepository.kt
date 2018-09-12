@@ -14,8 +14,8 @@ class ActorDataRepository @Inject constructor(private val factory: ActorDataStor
                                               private val actorDetailMapper: ActorDetailMapper):
         ActorRepository {
 
-    override fun getPopularActor(page: Int): Observable<ActorPopular> {
-        return factory.create().getPopularActor(page)
+    override fun getActorPopular(page: Int): Observable<ActorPopular> {
+        return factory.create().getActorPopular(page)
                 .map { actorPopularMapper.mapFromEntity(it) }
     }
 

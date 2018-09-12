@@ -15,8 +15,8 @@ import com.example.hendratay.whatowatch.presentation.data.ResourceState
 import com.example.hendratay.whatowatch.presentation.model.ActorPopularView
 import com.example.hendratay.whatowatch.presentation.model.ActorResultsView
 import com.example.hendratay.whatowatch.presentation.view.adapter.ActorAdapter
-import com.example.hendratay.whatowatch.presentation.viewmodel.PopularActorViewModel
-import com.example.hendratay.whatowatch.presentation.viewmodel.PopularActorViewModelFactory
+import com.example.hendratay.whatowatch.presentation.viewmodel.ActorPopularViewModel
+import com.example.hendratay.whatowatch.presentation.viewmodel.ActorPopularViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_actor.*
@@ -24,8 +24,8 @@ import javax.inject.Inject
 
 class ActorFragment: Fragment() {
 
-    @Inject lateinit var popularActorViewModelFactory: PopularActorViewModelFactory
-    private lateinit var popularActorViewModel: PopularActorViewModel
+    @Inject lateinit var actorPopularViewModelFactory: ActorPopularViewModelFactory
+    private lateinit var actorPopularViewModel: ActorPopularViewModel
     private lateinit var adapter: ActorAdapter
     private var actorList: MutableList<ActorResultsView> = mutableListOf()
 
@@ -60,8 +60,8 @@ class ActorFragment: Fragment() {
     }
 
     private fun getPopularActor() {
-        popularActorViewModel = ViewModelProviders.of(this, popularActorViewModelFactory)[PopularActorViewModel::class.java]
-        popularActorViewModel.getPopularActor().observe(this,
+        actorPopularViewModel = ViewModelProviders.of(this, actorPopularViewModelFactory)[ActorPopularViewModel::class.java]
+        actorPopularViewModel.getActorPopular().observe(this,
                 Observer<Resource<ActorPopularView>> { it ->
                     if(view?.parent != null) {
                         it?.let { handleActorPopularViewState(it.status, it.data) }

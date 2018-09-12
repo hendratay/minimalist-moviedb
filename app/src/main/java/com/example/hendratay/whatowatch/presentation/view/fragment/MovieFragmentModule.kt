@@ -1,8 +1,8 @@
 package com.example.hendratay.whatowatch.presentation.view.fragment
 
-import com.example.hendratay.whatowatch.domain.interactor.GetPopularMovie
+import com.example.hendratay.whatowatch.domain.interactor.GetMoviePopular
 import com.example.hendratay.whatowatch.presentation.model.mapper.MoviePopularViewMapper
-import com.example.hendratay.whatowatch.presentation.viewmodel.PopularMovieViewModelFactory
+import com.example.hendratay.whatowatch.presentation.viewmodel.MoviePopularViewModelFactory
 import dagger.Module
 import dagger.Provides
 
@@ -13,10 +13,10 @@ class MovieFragmentModule {
     companion object {
         @JvmStatic
         @Provides
-        fun providePopularMovieViewModelFactory(getPopularMovie: GetPopularMovie,
+        fun provideMoviePopularViewModelFactory(getMoviePopular: GetMoviePopular,
                                                 moviePopularViewMapper: MoviePopularViewMapper):
-                PopularMovieViewModelFactory {
-            return PopularMovieViewModelFactory(getPopularMovie, moviePopularViewMapper)
+                MoviePopularViewModelFactory {
+            return MoviePopularViewModelFactory(getMoviePopular, moviePopularViewMapper)
         }
     }
 

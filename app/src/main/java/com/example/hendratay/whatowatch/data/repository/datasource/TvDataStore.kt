@@ -6,7 +6,7 @@ import io.reactivex.Observable
 
 interface TvDataStore {
 
-    fun getPopularTv(page: Int): Observable<TvPopularEntity>
+    fun getTvPopular(page: Int): Observable<TvPopularEntity>
 
     fun getTvDetail(tvId: Int): Observable<TvDetailEntity>
 

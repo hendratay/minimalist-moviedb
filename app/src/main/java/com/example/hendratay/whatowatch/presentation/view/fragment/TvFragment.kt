@@ -16,8 +16,8 @@ import com.example.hendratay.whatowatch.presentation.model.TvPopularView
 import com.example.hendratay.whatowatch.presentation.model.TvResultsView
 import com.example.hendratay.whatowatch.presentation.view.activity.MainActivity
 import com.example.hendratay.whatowatch.presentation.view.adapter.TvAdapter
-import com.example.hendratay.whatowatch.presentation.viewmodel.PopularTvViewModel
-import com.example.hendratay.whatowatch.presentation.viewmodel.PopularTvViewModelFactory
+import com.example.hendratay.whatowatch.presentation.viewmodel.TvPopularViewModel
+import com.example.hendratay.whatowatch.presentation.viewmodel.TvPopularViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_tv.*
@@ -25,8 +25,8 @@ import javax.inject.Inject
 
 class TvFragment: Fragment() {
 
-    @Inject lateinit var popularTvViewModelFactory: PopularTvViewModelFactory
-    private lateinit var popularTvViewModel: PopularTvViewModel
+    @Inject lateinit var tvPopularViewModelFactory: TvPopularViewModelFactory
+    private lateinit var tvPopularViewModel: TvPopularViewModel
     private lateinit var adapter: TvAdapter
     private var tvList: MutableList<TvResultsView> = mutableListOf()
 
@@ -66,8 +66,8 @@ class TvFragment: Fragment() {
     }
 
     private fun getPopularTv() {
-        popularTvViewModel = ViewModelProviders.of(this, popularTvViewModelFactory)[PopularTvViewModel::class.java]
-        popularTvViewModel.getPopularMovie().observe(this,
+        tvPopularViewModel = ViewModelProviders.of(this, tvPopularViewModelFactory)[TvPopularViewModel::class.java]
+        tvPopularViewModel.getTvPopular().observe(this,
                 Observer<Resource<TvPopularView>> { it ->
                     if(view?.parent != null) {
                         it?.let { handleTvPopularViewState(it.status, it.data) }

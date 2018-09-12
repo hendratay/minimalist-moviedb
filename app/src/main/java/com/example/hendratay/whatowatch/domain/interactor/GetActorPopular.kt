@@ -5,10 +5,10 @@ import com.example.hendratay.whatowatch.domain.repository.ActorRepository
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class GetPopularActor @Inject constructor(private val actorRepository: ActorRepository): UseCase<ActorPopular, GetPopularActor.Params>() {
+class GetActorPopular @Inject constructor(private val actorRepository: ActorRepository): UseCase<ActorPopular, GetActorPopular.Params>() {
 
     override fun buildUseCaseObservable(params: Params?): Observable<ActorPopular> {
-        return actorRepository.getPopularActor(params!!.page)
+        return actorRepository.getActorPopular(params!!.page)
     }
 
     class Params(val page: Int) {

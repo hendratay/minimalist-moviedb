@@ -7,8 +7,8 @@ import io.reactivex.Observable
 
 class ActorCloudDataStore: ActorDataStore {
 
-    override fun getPopularActor(page: Int): Observable<ActorPopularEntity> {
-        return TMDBServiceFactory.makeService().popularActor(page)
+    override fun getActorPopular(page: Int): Observable<ActorPopularEntity> {
+        return TMDBServiceFactory.makeService().actorPopular(page)
     }
 
     override fun getActorDetail(actorId: Int): Observable<ActorDetailEntity> {
