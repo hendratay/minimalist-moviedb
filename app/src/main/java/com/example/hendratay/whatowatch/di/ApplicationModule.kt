@@ -32,8 +32,9 @@ class ApplicationModule {
 
     @Provides
     fun provideActorRepository(actorDataStoreFactory: ActorDataStoreFactory,
-                               actorPopularMapper: ActorPopularMapper): ActorRepository {
-        return ActorDataRepository(actorDataStoreFactory, actorPopularMapper)
+                               actorPopularMapper: ActorPopularMapper,
+                               actorDetailMapper: ActorDetailMapper): ActorRepository {
+        return ActorDataRepository(actorDataStoreFactory, actorPopularMapper, actorDetailMapper)
     }
 
 }
