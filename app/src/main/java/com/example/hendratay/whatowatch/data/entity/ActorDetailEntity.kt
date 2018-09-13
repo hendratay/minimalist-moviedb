@@ -3,7 +3,7 @@ package com.example.hendratay.whatowatch.data.entity
 import com.google.gson.annotations.SerializedName
 
 data class ActorDetailEntity(@SerializedName("birthday") val birthday: String?,
-                             @SerializedName("known_for_departement") val knownForDepartment: String,
+                             @SerializedName("known_for_department") val knownForDepartment: String,
                              @SerializedName("deathday") val deathDay: String?,
                              @SerializedName("id") val id: Int,
                              @SerializedName("name") val name: String,

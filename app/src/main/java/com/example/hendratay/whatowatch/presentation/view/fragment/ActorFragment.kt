@@ -14,6 +14,7 @@ import com.example.hendratay.whatowatch.presentation.data.Resource
 import com.example.hendratay.whatowatch.presentation.data.ResourceState
 import com.example.hendratay.whatowatch.presentation.model.ActorPopularView
 import com.example.hendratay.whatowatch.presentation.model.ActorResultsView
+import com.example.hendratay.whatowatch.presentation.view.activity.MainActivity
 import com.example.hendratay.whatowatch.presentation.view.adapter.ActorAdapter
 import com.example.hendratay.whatowatch.presentation.viewmodel.ActorPopularViewModel
 import com.example.hendratay.whatowatch.presentation.viewmodel.ActorPopularViewModelFactory
@@ -45,7 +46,7 @@ class ActorFragment: Fragment() {
     }
 
     private fun setupRecyclerView() {
-        adapter = ActorAdapter(actorList)
+        adapter = ActorAdapter(actorList) { getActorDetail(it) }
         rv_actor.layoutManager = GridLayoutManager(requireContext(), 3)
         rv_actor.adapter = adapter
         rv_actor.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -95,6 +96,18 @@ class ActorFragment: Fragment() {
     private fun setupScreenForError() {
         rv_actor.visibility = View.GONE
         progress_bar_actor.visibility = View.GONE
+    }
+
+    private fun getActorDetail(actorResultsView: ActorResultsView) {
+        val args = Bundle()
+        val actorDetailFragment = ActorDetailFragment()
+        args.putInt("actor_id", actorResultsView.id)
+        actorDetailFragment.arguments = args
+        (activity as MainActivity).supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, actorDetailFragment)
+                .addToBackStack(null)
+                .commit()
     }
 
 }

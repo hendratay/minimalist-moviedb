@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity() {
                 bottom_navigation_view.visibility = View.VISIBLE
                 bottom_navigation_view.selectedItemId = R.id.action_tv
             }
+            is ActorDetailFragment -> {
+                bottom_navigation_view.visibility = View.VISIBLE
+                bottom_navigation_view.selectedItemId = R.id.action_actor
+            }
             else -> bottom_navigation_view.selectedItemId = R.id.action_home
         }
     }

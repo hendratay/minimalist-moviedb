@@ -1,5 +1,6 @@
 package com.example.hendratay.whatowatch.di
 
+import com.example.hendratay.whatowatch.domain.model.ActorDetail
 import com.example.hendratay.whatowatch.presentation.view.fragment.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -21,5 +22,8 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = [ActorFragmentModule::class])
     abstract fun bindActorFragment(): ActorFragment
+
+    @ContributesAndroidInjector(modules = [ActorDetailFragmentModule::class])
+    abstract fun bindActorDetailFragment(): ActorDetailFragment
 
 }

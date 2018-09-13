@@ -9,13 +9,15 @@ import com.example.hendratay.whatowatch.presentation.model.ActorResultsView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_actor.view.*
 
-class ActorAdapter(private val actorList: List<ActorResultsView>): RecyclerView.Adapter<ActorAdapter.ActorViewHolder>() {
+class ActorAdapter(private val actorList: List<ActorResultsView>,
+                   private val clickListener: (ActorResultsView) -> Unit): RecyclerView.Adapter<ActorAdapter.ActorViewHolder>() {
 
     inner class ActorViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(actorResultsView: ActorResultsView) {
+        fun bind(actorResultsView: ActorResultsView, clickListener: (ActorResultsView) -> Unit) {
             Picasso.get().load("http://image.tmdb.org/t/p/w400/${actorResultsView.profilePath}").into(itemView.img_actor_profile)
             itemView.txt_actor_name.text = actorResultsView.name
             itemView.txt_actor_known_for.text = actorResultsView.knowForMovie?.get(0)?.title ?: actorResultsView.knownForTv?.get(0)?.name
+            itemView.setOnClickListener { clickListener(actorResultsView) }
         }
     }
 
@@ -28,7 +30,7 @@ class ActorAdapter(private val actorList: List<ActorResultsView>): RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
-        holder.bind(actorList[position])
+        holder.bind(actorList[position], clickListener)
     }
 
 }
