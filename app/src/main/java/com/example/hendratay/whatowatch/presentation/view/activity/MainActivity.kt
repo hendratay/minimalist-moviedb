@@ -15,15 +15,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         drawBehindStatusBar()
         setupBottomNavView()
-        loadFragment(HomeFragment())
+        loadFragment(AccountFragment())
+        bottom_navigation_view.selectedItemId = R.id.action_account
     }
 
     override fun onBackPressed() {
         when(supportFragmentManager.findFragmentById(R.id.fragment_container)) {
-            is HomeFragment -> finish()
+            is AccountFragment -> finish()
             is MovieDetailFragment -> {
                 bottom_navigation_view.visibility = View.VISIBLE
-                bottom_navigation_view.selectedItemId = R.id.action_movie
             }
             is TvDetailFragment -> {
                 bottom_navigation_view.visibility = View.VISIBLE
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 bottom_navigation_view.visibility = View.VISIBLE
                 bottom_navigation_view.selectedItemId = R.id.action_actor
             }
-            else -> bottom_navigation_view.selectedItemId = R.id.action_home
+            else -> bottom_navigation_view.selectedItemId = R.id.action_account
         }
     }
 
@@ -44,16 +44,16 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavView() {
         bottom_navigation_view.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.action_home -> {
-                    loadFragment(HomeFragment())
-                    true
-                }
                 R.id.action_explore -> {
                     loadFragment(ExploreFragment())
                     true
                 }
                 R.id.action_movie -> {
                     loadFragment(MovieFragment())
+                    true
+                }
+                R.id.action_account -> {
+                    loadFragment(AccountFragment())
                     true
                 }
                 R.id.action_tv -> {

@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.hendratay.whatowatch.R
 
-class HomeFragment: Fragment() {
+class AccountFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_account, container, false)
     }
 
 }

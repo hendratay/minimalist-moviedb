@@ -1,6 +1,5 @@
 package com.example.hendratay.whatowatch.di
 
-import com.example.hendratay.whatowatch.domain.model.ActorDetail
 import com.example.hendratay.whatowatch.presentation.view.fragment.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

@@ -2,12 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_home"
-        android:enabled="true"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/home"/>
-
-    <item
         android:id="@+id/action_explore"
         android:enabled="true"
         android:icon="@drawable/ic_explore_black_24dp"
@@ -18,6 +12,12 @@
         android:enabled="true"
         android:icon="@drawable/ic_movie_black_24dp"
         android:title="@string/movie"/>
+
+    <item
+        android:id="@+id/action_account"
+        android:enabled="true"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="@string/account"/>
 
     <item
         android:id="@+id/action_tv"

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Whato Watch</string>
-    <string name="home">Home</string>
     <string name="explore">Explore</string>
     <string name="movie">Movie</string>
+    <string name="account">Account</string>
     <string name="tv">Tv</string>
     <string name="actor">Actor</string>
 </resources>
