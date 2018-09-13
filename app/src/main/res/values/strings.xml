@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Whato Watch</string>
+    <!--bottom navigation bar-->
     <string name="explore">Explore</string>
     <string name="movie">Movie</string>
     <string name="account">Account</string>
     <string name="tv">Tv</string>
     <string name="actor">Actor</string>
+    <!--account-->
+    <string name="favorite">Favorite</string>
+    <string name="rated">Rated</string>
+    <string name="watchlist">Watchlist</string>
 </resources>
