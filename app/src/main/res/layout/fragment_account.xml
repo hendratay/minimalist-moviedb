@@ -131,4 +131,29 @@
         app:layout_constraintTop_toBottomOf="@+id/label_account_watchlist"
         tools:text="20" />
 
+    <TextView
+        android:id="@+id/label_account_playlist"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/created_playlist"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_account" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_account_playlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_account_playlist" />
+
 </android.support.constraint.ConstraintLayout>

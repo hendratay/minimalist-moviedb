@@ -10,4 +10,5 @@
     <string name="favorite">Favorite</string>
     <string name="rated">Rated</string>
     <string name="watchlist">Watchlist</string>
+    <string name="created_playlist">Created Playlist</string>
 </resources>
