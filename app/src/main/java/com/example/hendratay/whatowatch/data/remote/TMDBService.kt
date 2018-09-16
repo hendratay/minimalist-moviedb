@@ -8,6 +8,9 @@ import retrofit2.http.Query
 
 interface TMDBService {
 
+    @GET("account")
+    fun accountDetail(): Observable<AccountDetailEntity>
+
     @GET("movie/popular")
     fun moviePopular(@Query("page") page: Int): Observable<MoviePopularEntity>
 

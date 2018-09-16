@@ -7,7 +7,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 
-abstract class UseCase<T, Params> {
+abstract class UseCase<T, in Params> {
 
     private val disposables = CompositeDisposable()
 
