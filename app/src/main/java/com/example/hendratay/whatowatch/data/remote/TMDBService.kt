@@ -8,6 +8,9 @@ import retrofit2.http.Query
 
 interface TMDBService {
 
+    @GET("/authentication/token/new")
+    fun requestToken(): Observable<AuthTokenEntity>
+
     @GET("account")
     fun accountDetail(): Observable<AccountDetailEntity>
 
