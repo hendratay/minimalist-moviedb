@@ -1,6 +1,6 @@
 package com.example.hendratay.whatowatch.domain.model
 
-data class ActorResults(val profilePath: String,
+data class ActorResults(val profilePath: String?,
                         val adult: Boolean,
                         val id: Int,
                         val knownForMovie: List<MovieResults>?,
