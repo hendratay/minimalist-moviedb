@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
             is AccountFragment -> finish()
             is MovieDetailFragment -> {
                 bottom_navigation_view.visibility = View.VISIBLE
+                bottom_navigation_view.selectedItemId = R.id.action_movie
             }
             is TvDetailFragment -> {
                 bottom_navigation_view.visibility = View.VISIBLE
