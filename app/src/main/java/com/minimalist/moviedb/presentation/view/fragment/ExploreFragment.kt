@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.hendratay.whatowatch.R
+import com.minimalist.moviedb.R
 
 class ExploreFragment: Fragment() {
 

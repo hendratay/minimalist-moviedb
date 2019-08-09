@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.hendratay.whatowatch.R
+import com.minimalist.moviedb.R
 import com.minimalist.moviedb.presentation.data.Resource
 import com.minimalist.moviedb.presentation.model.ActorDetailView
 import com.minimalist.moviedb.presentation.viewmodel.ActorDetailViewModel

@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.hendratay.whatowatch.R
+import com.minimalist.moviedb.R
 import com.minimalist.moviedb.presentation.data.Resource
 import com.minimalist.moviedb.presentation.data.ResourceState
 import com.minimalist.moviedb.presentation.model.TvPopularView
@@ -55,7 +55,7 @@ class TvFragment: Fragment() {
         adapter = TvAdapter(tvList) { getTvDetail(it) }
         rv_tv.adapter = adapter
         rv_tv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if(dy > 0 && requireActivity().bottom_navigation_view.isShown) {
                     requireActivity().bottom_navigation_view?.visibility = View.GONE
                 } else if(dy < 0) {

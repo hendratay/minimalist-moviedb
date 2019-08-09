@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.example.hendratay.whatowatch.R
+import com.minimalist.moviedb.R
 import com.minimalist.moviedb.presentation.view.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 

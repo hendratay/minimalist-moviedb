@@ -1,5 +1,6 @@
 package com.minimalist.moviedb.di
 
+import com.minimalist.moviedb.data.entity.mapper.*
 import com.minimalist.moviedb.data.repository.ActorDataRepository
 import com.minimalist.moviedb.data.repository.MovieDataRepository
 import com.minimalist.moviedb.data.repository.TvDataRepository

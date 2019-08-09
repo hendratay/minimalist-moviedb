@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.hendratay.whatowatch.R
+import com.minimalist.moviedb.R
 import com.minimalist.moviedb.presentation.data.Resource
 import com.minimalist.moviedb.presentation.data.ResourceState
 import com.minimalist.moviedb.presentation.model.MoviePopularView
@@ -55,7 +55,7 @@ class MovieFragment: Fragment() {
         adapter = MovieAdapter(movieList) { getMovieDetail(it) }
         rv_movie.adapter = adapter
         rv_movie.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if(dy > 0 && requireActivity().bottom_navigation_view.isShown) {
                     requireActivity().bottom_navigation_view?.visibility = View.GONE
                 } else if(dy < 0) {

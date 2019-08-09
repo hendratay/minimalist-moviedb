@@ -10,7 +10,7 @@ import com.minimalist.moviedb.domain.model.MoviePopular
 import com.minimalist.moviedb.presentation.data.Resource
 import com.minimalist.moviedb.presentation.data.ResourceState
 import com.minimalist.moviedb.presentation.model.MoviePopularView
-import com.example.hendratay.whatowatch.presentation.model.mapper.MoviePopularViewMapper
+import com.minimalist.moviedb.presentation.model.mapper.MoviePopularViewMapper
 import javax.inject.Inject
 
 class MoviePopularViewModel @Inject constructor(private val getMoviePopular: GetMoviePopular,

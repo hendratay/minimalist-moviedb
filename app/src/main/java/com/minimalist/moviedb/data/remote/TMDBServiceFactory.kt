@@ -1,6 +1,6 @@
 package com.minimalist.moviedb.data.remote
 
-import com.example.hendratay.whatowatch.BuildConfig
+import com.minimalist.moviedb.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.HttpUrl

@@ -1,7 +1,7 @@
 package com.minimalist.moviedb.data.repository
 
-import com.example.hendratay.whatowatch.data.entity.mapper.TvDetailMapper
-import com.example.hendratay.whatowatch.data.entity.mapper.TvPopularMapper
+import com.minimalist.moviedb.data.entity.mapper.TvDetailMapper
+import com.minimalist.moviedb.data.entity.mapper.TvPopularMapper
 import com.minimalist.moviedb.data.repository.datasource.TvDataStoreFactory
 import com.minimalist.moviedb.domain.model.TvDetail
 import com.minimalist.moviedb.domain.model.TvPopular

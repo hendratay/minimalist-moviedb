@@ -10,7 +10,7 @@ import com.minimalist.moviedb.domain.model.ActorDetail
 import com.minimalist.moviedb.presentation.data.Resource
 import com.minimalist.moviedb.presentation.data.ResourceState
 import com.minimalist.moviedb.presentation.model.ActorDetailView
-import com.example.hendratay.whatowatch.presentation.model.mapper.ActorDetailViewMapper
+import com.minimalist.moviedb.presentation.model.mapper.ActorDetailViewMapper
 
 class ActorDetailViewModel(private val getActorDetail: GetActorDetail,
                            private val actorDetailViewMapper: ActorDetailViewMapper):

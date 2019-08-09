@@ -1,7 +1,7 @@
 package com.minimalist.moviedb.data.repository
 
-import com.example.hendratay.whatowatch.data.entity.mapper.MovieDetailMapper
-import com.example.hendratay.whatowatch.data.entity.mapper.MoviePopularMapper
+import com.minimalist.moviedb.data.entity.mapper.MovieDetailMapper
+import com.minimalist.moviedb.data.entity.mapper.MoviePopularMapper
 import com.minimalist.moviedb.data.repository.datasource.MovieDataStoreFactory
 import com.minimalist.moviedb.domain.model.MovieDetail
 import com.minimalist.moviedb.domain.model.MoviePopular

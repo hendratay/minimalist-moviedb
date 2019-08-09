@@ -10,7 +10,7 @@ import com.minimalist.moviedb.domain.model.TvPopular
 import com.minimalist.moviedb.presentation.data.Resource
 import com.minimalist.moviedb.presentation.data.ResourceState
 import com.minimalist.moviedb.presentation.model.TvPopularView
-import com.example.hendratay.whatowatch.presentation.model.mapper.TvPopularViewMapper
+import com.minimalist.moviedb.presentation.model.mapper.TvPopularViewMapper
 import javax.inject.Inject
 
 class TvPopularViewModel @Inject constructor(private val getTvPopular: GetTvPopular,

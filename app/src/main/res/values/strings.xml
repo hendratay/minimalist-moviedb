@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Whato Watch</string>
+    <string name="app_name">Minimalist MovieDB</string>
     <!--bottom navigation bar-->
     <string name="explore">Explore</string>
     <string name="movie">Movie</string>

@@ -1,7 +1,7 @@
 package com.minimalist.moviedb.data.repository
 
-import com.example.hendratay.whatowatch.data.entity.mapper.ActorDetailMapper
-import com.example.hendratay.whatowatch.data.entity.mapper.ActorPopularMapper
+import com.minimalist.moviedb.data.entity.mapper.ActorDetailMapper
+import com.minimalist.moviedb.data.entity.mapper.ActorPopularMapper
 import com.minimalist.moviedb.data.repository.datasource.ActorDataStoreFactory
 import com.minimalist.moviedb.domain.model.ActorDetail
 import com.minimalist.moviedb.domain.model.ActorPopular
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class ActorDataRepository @Inject constructor(private val factory: ActorDataStoreFactory,
                                               private val actorPopularMapper: ActorPopularMapper,
-                                              private val actorDetailMapper: ActorDetailMapper):
+                                              private val actorDetailMapper: ActorDetailMapper) :
         ActorRepository {
 
     override fun getActorPopular(page: Int): Observable<ActorPopular> {

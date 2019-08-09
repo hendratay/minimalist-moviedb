@@ -1,6 +1,6 @@
 package com.minimalist.moviedb.data.repository
 
-import com.example.hendratay.whatowatch.data.entity.mapper.AuthTokenMapper
+import com.minimalist.moviedb.data.entity.mapper.AuthTokenMapper
 import com.minimalist.moviedb.data.repository.datasource.AuthenticationDataStoreFactory
 import com.minimalist.moviedb.domain.model.AuthToken
 import com.minimalist.moviedb.domain.repository.AuthenticationRepository

@@ -10,7 +10,7 @@ import com.minimalist.moviedb.domain.model.TvDetail
 import com.minimalist.moviedb.presentation.data.Resource
 import com.minimalist.moviedb.presentation.data.ResourceState
 import com.minimalist.moviedb.presentation.model.TvDetailView
-import com.example.hendratay.whatowatch.presentation.model.mapper.TvDetailViewMapper
+import com.minimalist.moviedb.presentation.model.mapper.TvDetailViewMapper
 import javax.inject.Inject
 
 class TvDetailViewModel @Inject constructor(private val getTvDetail: GetTvDetail,

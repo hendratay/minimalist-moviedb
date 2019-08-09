@@ -1,7 +1,7 @@
 package com.minimalist.moviedb.presentation.view.fragment
 
 import com.minimalist.moviedb.domain.interactor.GetTvDetail
-import com.example.hendratay.whatowatch.presentation.model.mapper.TvDetailViewMapper
+import com.minimalist.moviedb.presentation.model.mapper.TvDetailViewMapper
 import com.minimalist.moviedb.presentation.viewmodel.TvDetailViewModelFactory
 import dagger.Module
 import dagger.Provides

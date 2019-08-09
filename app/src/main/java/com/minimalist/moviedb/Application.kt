@@ -1,6 +1,6 @@
 package com.minimalist.moviedb
 
-import com.example.hendratay.whatowatch.di.DaggerApplicationComponent
+import com.minimalist.moviedb.di.DaggerApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
