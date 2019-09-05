@@ -6,6 +6,11 @@
     <string name="account">Account</string>
     <string name="tv">Tv</string>
     <string name="actor">Actor</string>
+    <!--tab-->
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="now_playing">Now Playing</string>
     <!--account-->
     <string name="favorite">Favorite</string>
     <string name="rated">Rated</string>

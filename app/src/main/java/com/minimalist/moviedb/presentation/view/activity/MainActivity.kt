@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        drawBehindStatusBar()
+        setupToolbar()
         setupBottomNavView()
-        loadFragment(AccountFragment())
-        bottom_navigation_view.selectedItemId = R.id.action_account
+        loadFragment(MovieTabFragment())
+        bottom_navigation_view.selectedItemId = R.id.action_movie
     }
 
     override fun onBackPressed() {
@@ -34,12 +34,15 @@ class MainActivity : AppCompatActivity() {
                 bottom_navigation_view.visibility = View.VISIBLE
                 bottom_navigation_view.selectedItemId = R.id.action_actor
             }
-            else -> bottom_navigation_view.selectedItemId = R.id.action_account
+            else -> bottom_navigation_view.selectedItemId = R.id.action_movie
         }
     }
 
-    private fun drawBehindStatusBar() {
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+    private fun setupToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_account_circle_black_24dp)
     }
 
     private fun setupBottomNavView() {
@@ -50,11 +53,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_movie -> {
-                    loadFragment(MovieFragment())
-                    true
-                }
-                R.id.action_account -> {
-                    loadFragment(AccountFragment())
+                    loadFragment(MovieTabFragment())
                     true
                 }
                 R.id.action_tv -> {

@@ -2,33 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_explore"
-        android:enabled="true"
-        android:icon="@drawable/ic_explore_black_24dp"
-        android:title="@string/explore"/>
-
-    <item
         android:id="@+id/action_movie"
         android:enabled="true"
         android:icon="@drawable/ic_movie_black_24dp"
-        android:title="@string/movie"/>
-
-    <item
-        android:id="@+id/action_account"
-        android:enabled="true"
-        android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="@string/account"/>
+        android:title="@string/movie" />
 
     <item
         android:id="@+id/action_tv"
         android:enabled="true"
         android:icon="@drawable/ic_tv_black_24dp"
-        android:title="@string/tv"/>
+        android:title="@string/tv" />
 
     <item
         android:id="@+id/action_actor"
         android:enabled="true"
         android:icon="@drawable/ic_person_black_24dp"
-        android:title="@string/actor"/>
+        android:title="@string/actor" />
+
+    <item
+        android:id="@+id/action_explore"
+        android:enabled="true"
+        android:icon="@drawable/ic_explore_black_24dp"
+        android:title="@string/explore" />
 
 </menu>
