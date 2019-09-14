@@ -31,10 +31,10 @@ class MovieAdapter(private val movieList: List<MovieResultsView>,
         fun bind(position: Int, movieResultsView: MovieResultsView, clickListener: (MovieResultsView) -> Unit) {
             Picasso.get().load("https://image.tmdb.org/t/p/w300/${movieResultsView.posterPath}").into(itemView.img_movie_backdrop)
             itemView.txt_movie_ranking.text = (position + 1).toString()
-            itemView.txt_movie_title.text = movieResultsView.title
+            itemView.text_movie_title.text = movieResultsView.title
             val date = SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(movieResultsView.releaseDate)
             val sdf = SimpleDateFormat("d MMMM YYYY", Locale.US)
-            itemView.txt_movie_release_date.text = sdf.format(date)
+            itemView.label_movie_release_date.text = sdf.format(date)
             itemView.rating_movie_vote.rating = movieResultsView.voteAverage.toFloat() / 2
             itemView.txt_movie_vote.text = movieResultsView.voteAverage.toString()
             itemView.list_movie_genre.layoutManager = LinearLayoutManager(itemView.list_movie_genre.context, LinearLayoutManager.HORIZONTAL, false)

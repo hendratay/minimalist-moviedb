@@ -62,7 +62,7 @@
                 tools:text="1" />
 
             <TextView
-                android:id="@+id/txt_movie_title"
+                android:id="@+id/text_movie_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -75,7 +75,7 @@
                 tools:text="The Old Man and The Gun" />
 
             <TextView
-                android:id="@+id/txt_movie_release_date"
+                android:id="@+id/label_movie_release_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"

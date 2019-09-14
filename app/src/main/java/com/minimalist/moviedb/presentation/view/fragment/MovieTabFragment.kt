@@ -22,7 +22,7 @@ class MovieTabFragment : Fragment() {
 
     private fun setupTab() {
         if (activity != null) {
-            view_pager_movie.adapter = MovieViewPagerAdapter(activity!!.supportFragmentManager)
+            view_pager_movie.adapter = MovieViewPagerAdapter(childFragmentManager)
             tab_movie.setupWithViewPager(view_pager_movie)
         }
     }

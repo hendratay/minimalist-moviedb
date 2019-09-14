@@ -23,14 +23,17 @@ class MainActivity : AppCompatActivity() {
         when(supportFragmentManager.findFragmentById(R.id.fragment_container)) {
             is AccountFragment -> finish()
             is MovieDetailFragment -> {
+                toolbar.visibility = View.VISIBLE
                 bottom_navigation_view.visibility = View.VISIBLE
                 bottom_navigation_view.selectedItemId = R.id.action_movie
             }
             is TvDetailFragment -> {
+                toolbar.visibility = View.VISIBLE
                 bottom_navigation_view.visibility = View.VISIBLE
                 bottom_navigation_view.selectedItemId = R.id.action_tv
             }
             is ActorDetailFragment -> {
+                toolbar.visibility = View.VISIBLE
                 bottom_navigation_view.visibility = View.VISIBLE
                 bottom_navigation_view.selectedItemId = R.id.action_actor
             }

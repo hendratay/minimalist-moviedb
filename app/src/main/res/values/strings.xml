@@ -11,9 +11,18 @@
     <string name="top_rated">Top Rated</string>
     <string name="upcoming">Upcoming</string>
     <string name="now_playing">Now Playing</string>
-    <!--account-->
+    <!--misc-->
     <string name="favorite">Favorite</string>
     <string name="rated">Rated</string>
     <string name="watchlist">Watchlist</string>
     <string name="created_playlist">Created Playlist</string>
+    <string name="label_budget">Budget</string>
+    <string name="label_revenue">Revenue</string>
+    <string name="label_runtime">Runtime</string>
+    <string name="label_overview">Overview</string>
+    <string name="movie_runtime">%1$d min</string>
+    <string name="movie_revenue">$ %1$d million</string>
+    <string name="movie_budget">$ %1$d million</string>
+    <string name="label_crew">Featured Crew</string>
+    <string name="label_cast">Top Cast</string>
 </resources>

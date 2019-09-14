@@ -40,8 +40,8 @@ class MovieFragment: Fragment() {
         setupRecyclerView()
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         getPopularMovie()
     }
 
