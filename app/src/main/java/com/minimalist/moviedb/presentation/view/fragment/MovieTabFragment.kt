@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.minimalist.moviedb.R
+import com.minimalist.moviedb.presentation.view.activity.MainActivity
 import com.minimalist.moviedb.presentation.view.adapter.MovieViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_movie_tab.*
 
@@ -18,6 +19,7 @@ class MovieTabFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupTab()
+        (requireActivity() as MainActivity).setupSystemUIVisibility()
     }
 
     private fun setupTab() {

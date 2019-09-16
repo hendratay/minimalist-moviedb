@@ -1,5 +1,7 @@
 package com.minimalist.moviedb.presentation.view.activity
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -15,26 +17,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupToolbar()
         setupBottomNavView()
+        setupSystemUIVisibility()
         loadFragment(MovieTabFragment())
-        bottom_navigation_view.selectedItemId = R.id.action_movie
     }
 
     override fun onBackPressed() {
         when(supportFragmentManager.findFragmentById(R.id.fragment_container)) {
             is AccountFragment -> finish()
             is MovieDetailFragment -> {
-                toolbar.visibility = View.VISIBLE
-                bottom_navigation_view.visibility = View.VISIBLE
                 bottom_navigation_view.selectedItemId = R.id.action_movie
             }
             is TvDetailFragment -> {
-                toolbar.visibility = View.VISIBLE
-                bottom_navigation_view.visibility = View.VISIBLE
                 bottom_navigation_view.selectedItemId = R.id.action_tv
             }
             is ActorDetailFragment -> {
-                toolbar.visibility = View.VISIBLE
-                bottom_navigation_view.visibility = View.VISIBLE
                 bottom_navigation_view.selectedItemId = R.id.action_actor
             }
             else -> bottom_navigation_view.selectedItemId = R.id.action_movie
@@ -70,6 +66,27 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    fun setupSystemUIVisibility() {
+        when(supportFragmentManager.findFragmentById(R.id.fragment_container)) {
+            is MovieTabFragment -> {
+                toolbar.visibility = View.VISIBLE
+                bottom_navigation_view.visibility = View.VISIBLE
+                window.decorView.systemUiVisibility = 0
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                }
+                window.statusBarColor = Color.BLACK
+            }
+            is MovieDetailFragment -> {
+                toolbar.visibility = View.GONE
+                bottom_navigation_view.visibility = View.GONE
+                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                window.statusBarColor = Color.TRANSPARENT
+            }
+        }
+
     }
 
     private fun loadFragment(fragment: Fragment) {
